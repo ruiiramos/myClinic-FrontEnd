@@ -20,8 +20,7 @@
   
   <script>
   export default {
-    name: 'LoginPage',
-    // Adicione aqui os métodos e dados necessários
+   
   };
   </script>
   
