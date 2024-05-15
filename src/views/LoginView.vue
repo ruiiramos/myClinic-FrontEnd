@@ -5,8 +5,8 @@
       </div>
       <form class="login-form">
         <div class="input-group">
-          <label for="user-id">Nº Utente</label>
-          <input type="text" id="user-id" placeholder="Digite o nº de Utente" required>
+          <label for="nUtente">Nº Utente</label>
+          <input type="text" id="nUtente" placeholder="Digite o nº de Utente" required>
         </div>
         <div class="input-group">
           <label for="password">Palavra Passe</label>
@@ -67,9 +67,11 @@
 .input-group input {
   width: 100%;
   padding: 10px;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  transition: border-color 0.3s;
+  border: none; /* Remove todas as bordas */
+  border-bottom: 2px solid #6E7179; /* Adiciona uma borda inferior preta */
+  background-color: transparent; /* Torna o fundo transparente */
+  outline: none; /* Remove a borda ao focar o input */
+
 }
 
 .input-group input:focus {
@@ -102,7 +104,7 @@
 }
 
 .register-link:hover {
-  color: #0056b3; /* Azul escuro */
+  color: #ffffff; /* Azul escuro */
 }
   </style>
   
