@@ -1,15 +1,149 @@
 <template>
-    <div>
+    <div class="registration-container">
+      <div class="logo">
+        <img src="../img/myclinic.png" alt="logo">
+      </div>
+      <form class="registration-form">
+        <div class="column">
+          <div class="input-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" placeholder="Insira seu nome" required>
+          </div>
+          <div class="input-group">
+            <label for="genero">Gênero</label>
+            <select id="genero" required>
+              <option value="" disabled selected>Selecione a Opção</option>
+              <!-- Adicione aqui as opções de gênero -->
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="sistemaSaude">Sistema Saúde</label>
+            <select id="sistemaSaude" required>
+              <option value="" disabled selected>Selecione a Opção</option>
+              <!-- Adicione aqui as opções de sistema de saúde -->
+            </select>
+          </div>
+        </div>
+        <div class="column">
+          <div class="input-group">
+            <label for="nUtente">Nº Utente</label>
+            <input type="text" id="nUtente" placeholder="Insira nº Utente" required>
+          </div>
+          <div class="input-group">
+            <label for="morada">Morada</label>
+            <input type="text" id="morada" placeholder="Insira sua morada" required>
+          </div>
+          <div class="input-group">
+            <label for="contacto">Contacto</label>
+            <input type="text" id="contacto" placeholder="XXXXXXXXX" required>
+          </div>
+        </div>
+        <div class="column">
+          <div class="input-group">
+            <label for="dNascimento">Data Nascimento</label>
+            <input type="date" id="dNascimento" placeholder="XX/XX/XXXX" required>
+          </div>
+          <div class="input-group">
+            <label for="codPostal">Contacto</label>
+            <input type="text" id="codPostal" placeholder="XXXX-XXX" required>
+          </div>
+          <div class="input-group">
+            <label for="pwd">Password</label>
+            <input type="password" id="pwd" placeholder="********" required>
+          </div>
 
+        </div>
+        <button type="submit" class="btn-registrar">Registar</button>
+      </form>
     </div>
-</template>
-
-<script>
-    export default {
-        
+  </template>
+  
+  <script>
+  export default {
+    name: 'RegistrationPage',
+    data() {
+      return {
+        // Adicione aqui os dados necessários, como opções de gênero e sistema de saúde
+      };
+    },
+    methods: {
+      // Adicione aqui os métodos necessários, como a função de submissão do formulário
     }
-</script>
+  };
+  </script>
+  
+  <style scoped>
+  .registration-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: var(--color-background);
+    transition: background-color 0.5s;
+  }
+  
+  .logo img {
+    height: 250px;
+    width: 250px;
+  }
+  
+  .registration-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 960px;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    width: calc(33.333% - 10px);
+    margin-bottom: 20px;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--color-heading);
+  }
+  
+  .input-group input,
+  .input-group select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #6E7179;
+    background-color: transparent;
+    outline: none;
+  }
+  
+  .input-group input:focus,
+  .input-group select:focus {
+    border-color: var(--color-border-hover);
+  }
+  
+  .btn-registrar {
+    width: 100%;
+    padding: 10px;
+    background-color: #04D0AB;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-registrar:hover {
+    background-color: #038c6e;
+  }
 
-<style>
-
-</style>
+  </style>
+  
