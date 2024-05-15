@@ -13,14 +13,16 @@
             <label for="genero">Gênero</label>
             <select id="genero" required>
               <option value="" disabled selected>Selecione a Opção</option>
-              <!-- Adicione aqui as opções de gênero -->
+              <option value="masculino">Masculino</option>
+              <option value="feminino">Feminino</option>
             </select>
           </div>
           <div class="input-group">
             <label for="sistemaSaude">Sistema Saúde</label>
             <select id="sistemaSaude" required>
               <option value="" disabled selected>Selecione a Opção</option>
-              <!-- Adicione aqui as opções de sistema de saúde -->
+              <option value="adse">ADSE</option>
+              <option value="multicare">Multicare</option>
             </select>
           </div>
         </div>
