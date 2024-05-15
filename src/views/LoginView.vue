@@ -30,6 +30,7 @@
 .login-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
@@ -41,10 +42,12 @@
 .logo {
   background-size: contain;
   background-repeat: no-repeat;
-  height: 80 vh;
-  width: 80 px;
-  margin-bottom: 40px;
 }
+
+.logo img{
+    height: 250px !important;
+    width: 250px !important;
+  }
 
 .login-form {
   width: 100%;
@@ -77,7 +80,7 @@
 .btn-entrar {
   width: 100%;
   padding: 10px;
-  background-color: #4CAF50; /* Verde */
+  background-color: #04D0AB; /* Verde */
   color: var(--vt-c-white);
   border: none;
   border-radius: 4px;
@@ -86,14 +89,14 @@
 }
 
 .btn-entrar:hover {
-  background-color: #45a049; /* Verde escuro */
+  background-color: #04D0AB; /* Verde escuro */
 }
 
 .register-link {
   display: block;
   text-align: center;
   margin-top: 20px;
-  color: #007BFF; /* Azul */
+  color: #04D0AB; /* Azul */
   text-decoration: none;
   transition: color 0.3s;
 }
