@@ -10,7 +10,9 @@
               <img src="../img/noun-plus-669265.png" alt="Marcações" class="sidebar-icon">
             </router-link>
             <img src="../img/noun-calender-6465838.png" alt="Agenda" class="sidebar-icon">
-            <img src="../img/noun-doctor-79152.png" alt="Médicos" class="sidebar-icon">
+            <router-link to="/medicos">
+                <img src="../img/noun-doctor-79152.png" alt="Médicos" class="sidebar-icon">
+            </router-link>
             <router-link to="/especialidades">
               <img src="../img/noun-diagnosis-6672493.png" alt="Especialidades" class="sidebar-icon">
             </router-link>
