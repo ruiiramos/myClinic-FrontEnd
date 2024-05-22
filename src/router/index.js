@@ -3,7 +3,6 @@ import LandingPageView from '../views/LandingPageView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import DadosMarcacaoView from '../views/DadosMarcacaoView.vue'
-import AgendamentoView from '../views/AgendamentoView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,11 +26,6 @@ const router = createRouter({
       path: '/dadosmarcacao',
       name: 'dadosmarcacao',
       component: DadosMarcacaoView
-    },
-    {
-      path: '/agendamento',
-      name: 'agendamento',
-      component: AgendamentoView
     },
   ]
 })
