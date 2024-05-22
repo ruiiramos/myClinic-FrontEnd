@@ -6,12 +6,14 @@
       <ul class="sidebar-icons">
         <img src="../img/myclinic.png" alt="Logo" class="sidebar-logo">
         <img src="../img/noun-house-431615.png" alt="Inicio" class="sidebar-icon">
-        <router-link to="/login">
+        <router-link to="/dadosmarcacao">
           <img src="../img/noun-plus-669265.png" alt="Marcações" class="sidebar-icon">
         </router-link>
         <img src="../img/noun-calender-6465838.png" alt="Agenda" class="sidebar-icon">
         <img src="../img/noun-doctor-79152.png" alt="Médicos" class="sidebar-icon">
-        <img src="../img/noun-diagnosis-6672493.png" alt="Especialidades" class="sidebar-icon">
+        <router-link to="/especialidades">
+          <img src="../img/noun-diagnosis-6672493.png" alt="Especialidades" class="sidebar-icon">
+        </router-link>
         <img src="../img/noun-account-2049214.png" alt="Perfil" class="sidebar-icon">
         <router-link to="/login">
           <img src="../img/noun-logout-6733782.png" alt="Terminar Sessão" class="sidebar-icon">
@@ -83,10 +85,7 @@ export default {
     }
   },
   methods: {
-    submitForm() {
-      // Aqui você pode fazer o redirecionamento para outra página
-      this.$router.push('/agendamento');
-    }
+    
   }
 }
 </script>
