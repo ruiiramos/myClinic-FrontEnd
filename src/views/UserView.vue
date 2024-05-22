@@ -19,21 +19,36 @@
               <img src="../img/noun-diagnosis-6672493.png" alt="Especialidades" class="sidebar-icon">
             </router-link>
             <router-link to="/user">
-                <img src="../img/noun-account-2049214.png" alt="Perfil" class="sidebar-icon">
+            <img src="../img/noun-account-2049214.png" alt="Perfil" class="sidebar-icon">
             </router-link>
             <router-link to="/login">
               <img src="../img/noun-logout-6733782.png" alt="Terminar Sessão" class="sidebar-icon">
             </router-link>
           </ul>
         </div>
-        
+        <div class="content">
+            <div class="retangulo-bem-vindo">
+                <img src="../img/myclinic.png" alt="logo">
+                <div class="text-container">
+                    <h2>Olá Paciente,</h2>
+                    <p>Seja bem-vindo à sua página pessoal da myClinic!</p>
+                </div>
+            </div>
+            <div class="retangulo-calendario">
+
+            </div>
+        </div>
         
     </div>
 </template>
 
 <script>
     export default {
-
+        data() {
+            return {
+                selectedEspecialidade: ''
+            }
+        }
     }
 </script>
 
