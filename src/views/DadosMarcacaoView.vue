@@ -5,7 +5,9 @@
       <!-- Conteúdo da barra lateral aqui -->
       <ul class="sidebar-icons">
         <img src="../img/myclinic.png" alt="Logo" class="sidebar-logo">
-        <img src="../img/noun-house-431615.png" alt="Inicio" class="sidebar-icon">
+        <router-link to="/home">
+          <img src="../img/noun-house-431615.png" alt="Inicio" class="sidebar-icon">
+      </router-link>
         <router-link to="/dadosmarcacao">
           <img src="../img/noun-plus-669265.png" alt="Marcações" class="sidebar-icon">
         </router-link>
