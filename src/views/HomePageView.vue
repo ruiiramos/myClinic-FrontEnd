@@ -32,8 +32,11 @@
                     <p>Seja bem-vindo à sua página pessoal da myClinic!</p>
                 </div>
             </div>
-            <div class="retangulo-branco"></div>
+            <div class="retangulo-calendario">
+
+            </div>
         </div>
+        
     </div>
 </template>
 
@@ -112,7 +115,7 @@
     font-size: 17px;
 }
 
-.retangulo-branco {
+.retangulo-calendario {
     width: 400px; 
     height: 300px;
     padding: 50px; 
