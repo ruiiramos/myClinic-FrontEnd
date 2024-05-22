@@ -26,19 +26,6 @@
             </router-link>
           </ul>
         </div>
-        <div class="content">
-            <div class="retangulo-bem-vindo">
-                <img src="../img/myclinic.png" alt="logo">
-                <div class="text-container">
-                    <h2>Olá Paciente,</h2>
-                    <p>Seja bem-vindo à sua página pessoal da myClinic!</p>
-                </div>
-            </div>
-            <div class="retangulo-calendario">
-
-            </div>
-        </div>
-        
     </div>
 </template>
 
@@ -59,10 +46,10 @@
 }
 
 .sidebar {
-    width: 250px; /* Largura da barra lateral */
-    background-color: #f0f0f0; /* Cor de fundo da barra lateral */
+    width: 250px;
+    background-color: #f0f0f0; 
     padding: 20px;
-    height: 100vh; /* Altura total da tela */
+    height: 100vh; 
     background: #04D0AB;
 }
 

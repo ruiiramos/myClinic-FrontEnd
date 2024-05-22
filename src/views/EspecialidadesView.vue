@@ -31,6 +31,7 @@
               <option value="" disabled selected>Selecione Especialidade</option>
               <!-- Opções de especialidades -->
           </select>
+          
             <div class="white-rectangle">
               <h2>Psicologia</h2>
                 <router-link to="/dadosmarcacao">
