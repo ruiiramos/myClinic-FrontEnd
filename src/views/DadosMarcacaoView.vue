@@ -6,12 +6,16 @@
       <ul class="sidebar-icons">
         <img src="../img/myclinic.png" alt="Logo" class="sidebar-logo">
         <img src="../img/noun-house-431615.png" alt="Inicio" class="sidebar-icon">
-        <img src="../img/noun-plus-669265.png" alt="Marcações" class="sidebar-icon">
+        <router-link to="/login">
+          <img src="../img/noun-plus-669265.png" alt="Marcações" class="sidebar-icon">
+        </router-link>
         <img src="../img/noun-calender-6465838.png" alt="Agenda" class="sidebar-icon">
         <img src="../img/noun-doctor-79152.png" alt="Médicos" class="sidebar-icon">
         <img src="../img/noun-diagnosis-6672493.png" alt="Especialidades" class="sidebar-icon">
         <img src="../img/noun-account-2049214.png" alt="Perfil" class="sidebar-icon">
-        <img src="../img/noun-logout-6733782.png" alt="Terminar Sessão" class="sidebar-icon">
+        <router-link to="/login">
+          <img src="../img/noun-logout-6733782.png" alt="Terminar Sessão" class="sidebar-icon">
+        </router-link>
       </ul>
     </div>
 
@@ -19,10 +23,28 @@
       <div class="progress-bar">
         <!-- Barra de progresso com etapas -->
         <span class="active">1. Dados da Marcação</span>
-        <span>2. Agendamento</span>
         <span>3. Confirmação</span>
     </div>
       <form class="appointment-form" @submit.prevent="submitForm">
+
+        <div class="input-group">
+          <label for="dNascimento">Selecione uma data</label>
+          <input type="date" id="dNascimento" v-model="DataConsulta" required>
+        </div>
+        <!-- Dropdown Horarios -->
+        <select v-model="selectedHorarios" required>
+        <option value="" disabled selected>Selecione Horário</option>
+        <option value="9:00">9:00</option>
+        <option value="10:00">10:00</option>
+        <option value="11:00">11:00</option>
+        <option value="12:00">12:00</option>
+        <option value="14:00">14:00</option>
+        <option value="15:00">15:00</option>
+        <option value="16:00">16:00</option>
+        <option value="17:00">17:00</option>
+        <option value="18:00">18:00</option>
+        
+        </select>
         <!-- Dropdown para Especialidade -->
         <select v-model="selectedEspecialidade" required>
           <option value="" disabled selected>Selecione Especialidade</option>
@@ -53,6 +75,8 @@
 export default {
   data() {
     return {
+      DataConsulta: '',
+      selectedHorarios: '',
       selectedEspecialidade: '',
       selectedMedico: '',
       selectedSistemaSaude: ''
@@ -69,8 +93,6 @@ export default {
 
 
 <style scoped>
-/* Estilos gerais */
-/* Estilos gerais */
 .container {
     display: flex;
     flex-direction: row;
@@ -149,5 +171,31 @@ export default {
   .btn-continuar:hover {
     background-color: #038c6e;
   }
+
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--color-heading);
+  }
+  
+  .input-group input,
+  .input-group select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #6E7179;
+    background-color: transparent;
+    outline: none;
+  }
+  
+  .input-group input:focus,
+  .input-group select:focus {
+    border-color: var(--color-border-hover);
+  }
+  
   
 </style>
