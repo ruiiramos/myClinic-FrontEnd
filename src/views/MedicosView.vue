@@ -27,8 +27,8 @@
             </ul>
           </div>
         <div class="content">
-          <select v-model="selectedMedico" required>
-              <option value="" disabled selected>Selecione o Médico</option>
+          <select v-model="selectedEspecialidade" required>
+              <option value="" disabled selected>Selecione a Especialidade</option>
               <!-- Opções Médicos -->
           </select>
             <div class="white-rectangle">
@@ -63,7 +63,7 @@
     export default {
         data() {
             return {
-                selectedMedico: ''
+                selectedEspecialidade: ''
             }
         }
     }
