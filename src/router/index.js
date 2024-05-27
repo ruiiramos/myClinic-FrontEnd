@@ -7,6 +7,7 @@ import EspecialidadesView from '../views/EspecialidadesView.vue'
 import MedicosView from '../views/MedicosView.vue'
 import UserView from '../views/UserView.vue'
 import HomePageView from '../views/HomePageView.vue'
+import ConfirmacaoView from '../views/ConfirmacaoView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +51,11 @@ const router = createRouter({
       path: '/user',
       name: 'user',
       component: UserView
+    },
+    {
+      path: '/confirmacao',
+      name: 'confirmacao',
+      component: ConfirmacaoView
     },
   ]
 })
