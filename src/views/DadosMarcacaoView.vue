@@ -101,8 +101,8 @@ export default {
 .container {
     display: flex;
     flex-direction: row;
-
-  }
+    overflow: hidden;
+    }
   
   .sidebar {
     width: 250px; /* Largura da barra lateral */
