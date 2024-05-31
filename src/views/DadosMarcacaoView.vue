@@ -105,10 +105,10 @@ export default {
     }
   
   .sidebar {
-    width: 250px; /* Largura da barra lateral */
-    background-color: #f0f0f0; /* Cor de fundo da barra lateral */
+    width: 250px; 
+    background-color: #f0f0f0; 
     padding: 20px;
-    height: 100vh; /* Altura total da tela */
+    height: 100vh; 
     background: #04D0AB;
   }
   .sidebar-logo{
