@@ -31,7 +31,7 @@
         <div class="progress-bar">
           <!--Barra de progresso com etapas -->
           <span>1. Dados da Marcação</span>
-          <span class="active">3. Confirmação</span>
+          <span class="active">2. Confirmação</span>
         </div>
         <div class="centered-box">
           <p>Você deseja marcar uma consulta para:</p>
@@ -96,6 +96,9 @@
     font-family: 'Arial', sans-serif;
     color: #000000;
     padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
   }
   
   /* Barra de progresso e etapas */
@@ -109,7 +112,8 @@
     background: #f0f0f0;
     padding: 5px 10px;
     border-radius: 5px;
-    margin-right: 250px; 
+    margin-left: auto; 
+    margin-right: auto;
   }
   
   .progress-bar span.active {
@@ -118,6 +122,7 @@
   }
   
   .centered-box {
+
     width: 300px; 
     height: 200px; 
     background-color: white; 
@@ -146,8 +151,7 @@
     color: white; 
     border: none; 
     border-radius: 5px; 
-    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
-  
+    cursor: pointer; 
   }
   
   .confirm-button:hover {
