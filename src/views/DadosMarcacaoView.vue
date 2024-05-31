@@ -129,6 +129,7 @@ export default {
     font-family: 'Arial', sans-serif;
     color: #000000;
     padding: 20px;
+
   }
   
     /* Barra de progresso e etapas */
@@ -170,7 +171,6 @@ export default {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    
   }
   
   .btn-continuar:hover {
@@ -179,6 +179,7 @@ export default {
 
   .input-group {
     margin-bottom: 20px;
+    
   }
   
   .input-group label {
