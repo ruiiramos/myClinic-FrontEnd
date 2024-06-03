@@ -63,6 +63,7 @@ const router = createRouter({
       name: 'agenda',
       component: AgendaView
     },
+
   ]
 })
 
