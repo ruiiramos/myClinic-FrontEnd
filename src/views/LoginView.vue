@@ -34,7 +34,6 @@
   justify-content: center;
   min-height: 100vh;
   padding: 20px;
-  background: var(--color-background);
   transition: background-color 0.5s;
 }
 
@@ -81,7 +80,7 @@
 .btn-entrar {
   width: 100%;
   padding: 10px;
-  background-color: #04D0AB; /* Verde */
+  background: linear-gradient(135deg, #480ca8, #4cc9f0);
   color: var(--vt-c-white);
   border: none;
   border-radius: 4px;
@@ -97,13 +96,13 @@
   display: block;
   text-align: center;
   margin-top: 20px;
-  color: #04D0AB; /* Azul */
+  color: blue; /* Azul */
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .register-link:hover {
-  color: #ffffff; /* Azul escuro */
+  color: #480ca8; /* Azul escuro */
 }
   </style>
   

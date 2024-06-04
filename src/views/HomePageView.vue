@@ -78,6 +78,7 @@ export default {
     border-radius: 15px;
     display: flex; 
     align-items: center; 
+    border: 1px solid black;
 }
 
 .retangulo-bem-vindo img {
@@ -109,5 +110,6 @@ export default {
     border-radius: 15px;
     display: flex; 
     align-items: center; 
+    border: 1px solid black;
 }
 </style>

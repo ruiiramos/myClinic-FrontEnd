@@ -37,7 +37,7 @@
     background-color: #f0f0f0;
     padding: 20px;
     height: 100vh;
-    background: #04D0AB;
+    background: linear-gradient(135deg, #480ca8, #4cc9f0);
   }
   
   .sidebar-logo {
@@ -50,7 +50,7 @@
     width: 50px;
     height: 50px;
     margin-left: 25%;
-    margin-top: 5%;
+    margin-top: 15%;
   }
   </style>
   

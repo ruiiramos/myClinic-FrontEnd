@@ -3,7 +3,7 @@
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
-  --vt-c-grey: rgb(189, 186, 186);
+  --vt-c-grey: #fff;
 
 
   --vt-c-black: #181818;
@@ -63,7 +63,6 @@
 body {
   min-height: 100%;
   color: var(--color-text);
-  background: var(--color-background);
   transition:
     color 0.5s,
     background-color 0.5s;

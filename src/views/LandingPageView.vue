@@ -215,7 +215,7 @@
     }
 </script>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 * {
     margin: 0;
@@ -237,6 +237,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    background-color: #fff;
 }
 .container {
     width: 82%;
