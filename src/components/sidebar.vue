@@ -32,7 +32,6 @@
   </script>
   
   <style scoped>
-  /* Estilos da barra lateral aqui */
   .sidebar {
     width: 250px;
     background-color: #f0f0f0;
