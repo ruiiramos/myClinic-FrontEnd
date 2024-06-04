@@ -28,8 +28,6 @@
     flex-direction: row;
   }
   
-  
-  
   .myclinic {
     font-family: 'Arial', sans-serif;
     color: #000000;

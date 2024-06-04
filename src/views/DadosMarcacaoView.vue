@@ -1,5 +1,4 @@
 <template>
-
   <div class="container">
       <!-- Barra lateral -->
       <Sidebar/>
@@ -81,34 +80,12 @@ export default {
 
 
 <style scoped>
-
 .container {
     display: flex;
     flex-direction: row;
     overflow: hidden;
-    }
+}
   
-  .sidebar {
-    width: 250px; 
-    background-color: #f0f0f0; 
-    padding: 20px;
-    height: 100vh; 
-    background: #04D0AB;
-  }
-  .sidebar-logo{
-  width: 90px;
-  height: 90px;
-  margin-left: 15%;
-  }
-
-  .sidebar-icon{
-    width: 50px;
-    height: 50px;
-    margin-left: 25%;
-    margin-top: 15%;
-    }
-
-
 .myclinic {
     font-family: 'Arial', sans-serif;
     color: #000000;
@@ -132,7 +109,7 @@ export default {
   
   .progress-bar span.active {
     margin-left: 15%;
-    background: #04D0AB;
+    background: linear-gradient(135deg, #480ca8, #4cc9f0);
     color: black;
   }
   
@@ -147,7 +124,7 @@ export default {
   
   /* Botão Continuar */
   .btn-continuar {
-    background-color: #04D0AB;
+    background: linear-gradient(135deg, #480ca8, #4cc9f0);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -155,11 +132,10 @@ export default {
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
   }
   
   .btn-continuar:hover {
-    background-color: #038c6e;
+    background-color: blue;
   }
 
   .input-group {

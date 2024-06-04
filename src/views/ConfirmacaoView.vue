@@ -52,26 +52,6 @@
     flex-direction: row;
   }
   
-  .sidebar {
-    width: 250px; 
-    background-color: #f0f0f0; 
-    padding: 20px;
-    height: 100vh; 
-    background: #04D0AB;
-  }
-  .sidebar-logo {
-    width: 90px;
-    height: 90px;
-    margin-left: 15%;
-  }
-  
-  .sidebar-icon {
-    width: 50px;
-    height: 50px;
-    margin-left: 25%;
-    margin-top: 15%;
-  }
-  
   .myclinic {
     font-family: 'Arial', sans-serif;
     color: #000000;
@@ -97,7 +77,7 @@
   }
   
   .progress-bar span.active {
-    background: #04D0AB;
+    background: linear-gradient(135deg, #480ca8, #4cc9f0);
     color: black;
   }
   
@@ -112,6 +92,7 @@
     align-items: center;
     text-align: center;
     border-radius: 15px;
+    border: 1px solid black;
   }
   
   .link {
@@ -127,7 +108,7 @@
     display: block;
     margin-top: 10px;
     padding: 10px 20px; 
-    background-color: #04D0AB; 
+    background: linear-gradient(135deg, #480ca8, #4cc9f0); 
     color: white; 
     border: none; 
     border-radius: 5px; 
@@ -135,7 +116,7 @@
   }
   
   .confirm-button:hover {
-    background-color: #03b598; 
+    background-color: blue; 
   }
 
   .popup {

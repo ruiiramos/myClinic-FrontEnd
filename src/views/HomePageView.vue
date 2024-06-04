@@ -40,27 +40,6 @@ export default {
     flex-direction: row;
 }
 
-.sidebar {
-    width: 250px; /* Largura da barra lateral */
-    background-color: #f0f0f0; /* Cor de fundo da barra lateral */
-    padding: 20px;
-    height: 100vh; /* Altura total da tela */
-    background: #04D0AB;
-}
-
-.sidebar-logo {
-    width: 90px;
-    height: 90px;
-    margin-left: 15%;
-}
-
-.sidebar-icon {
-    width: 50px;
-    height: 50px;
-    margin-left: 25%;
-    margin-top: 15%;
-}
-
 .content {
     display: flex;
     flex-direction: row;
