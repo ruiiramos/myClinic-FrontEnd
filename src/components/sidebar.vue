@@ -51,7 +51,7 @@
     width: 50px;
     height: 50px;
     margin-left: 25%;
-    margin-top: 15%;
+    margin-top: 5%;
   }
   </style>
   

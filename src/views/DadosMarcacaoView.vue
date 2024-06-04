@@ -84,6 +84,7 @@ export default {
 .container {
     display: flex;
     flex-direction: row;
+    overflow: hidden;
     }
   
   .sidebar {
