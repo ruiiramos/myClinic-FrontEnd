@@ -4,23 +4,23 @@
       <ul class="sidebar-icons">
         <img src="../img/myclinic.png" alt="Logo" class="sidebar-logo">
         <router-link to="/home">
-          <img src="../img/noun-house-431615.png" alt="Inicio" class="sidebar-icon">
+          <img src="../img/icons-sidebar/home.png" alt="Inicio" class="sidebar-icon">
         </router-link>
         <router-link to="/dadosmarcacao">
-          <img src="../img/noun-plus-669265.png" alt="Marcações" class="sidebar-icon">
+          <img src="../img/icons-sidebar/plus.png" alt="Marcações" class="sidebar-icon">
         </router-link>
-        <img src="../img/noun-calender-6465838.png" alt="Agenda" class="sidebar-icon">
+        <img src="../img/icons-sidebar/calendar.png" alt="Agenda" class="sidebar-icon">
         <router-link to="/medicos">
-          <img src="../img/noun-doctor-79152.png" alt="Médicos" class="sidebar-icon">
+          <img src="../img/icons-sidebar/doctor.png" alt="Médicos" class="sidebar-icon">
         </router-link>
         <router-link to="/especialidades">
-          <img src="../img/noun-diagnosis-6672493.png" alt="Especialidades" class="sidebar-icon">
+          <img src="../img/icons-sidebar/especialidades.png" alt="Especialidades" class="sidebar-icon">
         </router-link>
         <router-link to="/user">
-          <img src="../img/noun-account-2049214.png" alt="Perfil" class="sidebar-icon">
+          <img src="../img/icons-sidebar/user.png" alt="Perfil" class="sidebar-icon">
         </router-link>
         <router-link to="/login">
-          <img src="../img/noun-logout-6733782.png" alt="Terminar Sessão" class="sidebar-icon">
+          <img src="../img/icons-sidebar/logout.png" alt="Terminar Sessão" class="sidebar-icon">
         </router-link>
       </ul>
     </div>
@@ -47,8 +47,8 @@
   }
   
   .sidebar-icon {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     margin-left: 25%;
     margin-top: 15%;
   }
