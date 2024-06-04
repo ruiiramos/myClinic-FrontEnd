@@ -127,7 +127,6 @@
                     <p>A sua opinião é importante para nós. Não hesite em partilhar as suas dúvidas ou sugestões. Estamos sempre prontos para ouvir e ajudar.</p>
         
                     <article>
-                            <i><img src="../img/info-icon.png" with="15px" height="15px"></i>
                         <div>
                             <h4>Médicos Experientes</h4>
                             <small>
@@ -137,7 +136,6 @@
                     </article>
         
                     <article>
-                            <i><img src="../img/info-icon.png" with="15px" height="15px"></i>
                         <div>
                             <h4>Tecnologia Avançada</h4>
                             <small>
@@ -147,7 +145,6 @@
                     </article>
         
                     <article>
-                            <i><img src="../img/info-icon.png" with="15px" height="15px"></i>
                         <div>
                             <h4>Emergência</h4>
                             <small>
