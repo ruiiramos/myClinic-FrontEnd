@@ -31,27 +31,21 @@
             <!---------END OF HEADER-------------------->    
             <section id="services">
                 <h2>Nossos Serviços</h2>
-                <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                </p>
+                <p>Na MyClinic, temos orgulho em oferecer uma ampla gama de serviços de saúde para atender às suas necessidades.</p>
         
                 <div class="container">
                     <article>
                         <i class='bx bxs-book-content'></i>
                         <div>
                            <h4>Consultas</h4> 
-                           <small>
-                            t is a long established fact that a reader will be distracted by the readable content of a page
-                           </small>
+                           <small>Oferecemos consultas médicas personalizadas para atender às necessidades de saúde de cada paciente.</small>
                         </div>
                     </article>
                     <article>
                         <i class='bx bxs-book-content'></i>
                         <div>
                            <h4>Exames</h4> 
-                           <small>
-                            t is a long established fact that a reader will be distracted by the readable content of a page
-                           </small>
+                           <small>Realizamos uma variedade de exames diagnósticos para ajudar a identificar e tratar condições de saúde de forma eficaz e eficiente.</small>
                         </div>
                     </article>
                     
@@ -59,9 +53,7 @@
                         <i class='bx bxs-book-content'></i>
                         <div>
                            <h4>Análises</h4> 
-                           <small>
-                            t is a long established fact that a reader will be distracted by the readable content of a page
-                           </small>
+                           <small>Conduzimos uma gama de análises clínicas para monitorar e diagnosticar várias condições de saúde, garantindo um cuidado de saúde completo.</small>
                         </div>
                     </article>
                 </div>
@@ -70,9 +62,7 @@
         <!------------------END OF THE SERVICES------------------->
         <section id="doctor">
             <h2>Nossos Médicos</h2>
-            <p>
-                orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            </p>
+            <p>É com grande prazer que apresentamos a nossa dedicada equipe de médicos. Cada um deles é altamente qualificado e comprometido em fornecer o melhor cuidado possível aos nossos pacientes.</p>
             <div class="container">
                 <article>
                     <div class="doctor__image">
@@ -83,7 +73,7 @@
                         <small>Psicólga</small>
                     </div>
                     <div class="doctor__socials">
-                        <a href="https://linkedin.com" target="_blank"></a>
+                        <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.png" width="15px" height="15px"></a>
                     </div>
                 </article>
         
@@ -96,7 +86,7 @@
                         <small>Psicólga</small>
                     </div>
                     <div class="doctor__socials">
-                        <a href="https://linkedin.com" target="_blank"><i class='bx bxl-linkedin'style='color:#121111'></i></a>
+                        <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.png" width="15px" height="15px"></a>
                     </div>
                     
                 </article>
@@ -110,7 +100,7 @@
                         <small>Psicólga</small>
                     </div>
                     <div class="doctor__socials">
-                        <a href="https://linkedin.com" target="_blank"><i class='bx bxl-linkedin' style='color:#121111'></i></a>
+                        <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.png" width="15px" height="15px"></a>
                     </div>
                 </article>
         
@@ -123,7 +113,7 @@
                         <small>Psicólga</small>
                     </div>
                     <div class="doctor__socials">
-                        <a href="https://linkedin.com" target="_blank"><i class='bx bxl-linkedin' style='color:#121111'></i></a>
+                        <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.png" width="15px" height="15px"></a>
                     </div>
                 </article>
             </div>
@@ -137,9 +127,7 @@
                     <p>is a long established fact that a reader will be distracted by the readable content of a page</p>
         
                     <article>
-                        <div class="info__icon">
-                            <i class='bx bx-user'></i>
-                        </div>
+                            <i><img src="../img/info-icon.png" with="15px" height="15px"></i>
                         <div>
                             <h4>Médicos Experientes</h4>
                             <small>
@@ -149,9 +137,7 @@
                     </article>
         
                     <article>
-                        <div class="info__icon">
-                            <i class='bx bx-reflect-horizontal'></i>
-                        </div>
+                            <i><img src="../img/info-icon.png" with="15px" height="15px"></i>
                         <div>
                             <h4>Tecnologia Avançada</h4>
                             <small>
@@ -161,9 +147,7 @@
                     </article>
         
                     <article>
-                        <div class="info__icon">
-                            <i class='bx bx-first-aid'></i>
-                        </div>
+                            <i><img src="../img/info-icon.png" with="15px" height="15px"></i>
                         <div>
                             <h4>Emergência</h4>
                             <small>
@@ -196,25 +180,31 @@
             <div class="container">
                 <article class="contact">
                     <div class="contact__items">
-                        <i class='bx bx-phone'></i>
+                        <i><img src="../img/icon-tlm.png" with="20px" height="20px"></i>
                         <h3>Contacto: +351 912 345 678</h3>
                     </div>
                     <div class="contact__items">
-                        <i class='bx bx-envelope'></i>
+                        <i><img src="../img/email-icon.png" with="20px" height="20px"></i>
                         <h3>Email: apoio@myclinic.com</h3>
                     </div>
+                </article>
+                <article class="adress">
+                    <i class='bx bx-home'><img src="../img/location-icon.png" with="20px" height="20px"></i>
+                    <a href="https://www.google.com/maps" target="_blank"><h3>Rua da Clinica 34, Porto</h3></a>
+                    
+                    
                 </article>
         
                 <article>
                     <div class="footer__socials">
-                        <a href="https://www.facebook.com/" target="_blank"><i class='bx bxl-facebook-circle' ></i></a>
-                        <a href="https://www.instagram.com/jonathansantos.costa/" target="_blank"><i class='bx bxl-instagram' ></i></a>
-                        <a href="https://www.youtube.com/channel/UCTx7MJG_V7WtB1a4aqrK6Yg" target="_blank"><i class='bx bxl-youtube' ></i></a>
-                        <a href="https://www.linkedin.com/in/jonathansantos-costa/" target="_blank"><i class='bx bxl-linkedin' ></i></a>
+                        <a href="https://www.facebook.com/" target="_blank"><i><img src="../img/facebook.png" width="20px" height="20px"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank"><i><img src="../img/instagram.png" width="20px" height="20px"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank"><i><img src="../img/youtube.png" width="20px" height="20px"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i><img src="../img/linkedin-white.png" width="20px" height="20px"></i></a>
                     </div> 
                 </article>
-        
-                </div>
+            </div>
+
         </footer>
     </div>
 </template>
@@ -237,9 +227,7 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-html {
-    scroll-behavior: smooth;
-}
+
 body {
     font-family: Montserrat, sans-serif;
     line-height: 1.5;
