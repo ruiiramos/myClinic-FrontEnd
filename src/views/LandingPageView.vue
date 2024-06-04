@@ -13,7 +13,6 @@
         
                         <button id="open__nav-btn"><i class='bx bx-menu'></i></button>
                         <button id="close__nav-btn"><i class='bx bx-x' ></i></button>
-                    
                 </div>
             </nav>
         <!-----------------END OF NAV MENU---------------->
