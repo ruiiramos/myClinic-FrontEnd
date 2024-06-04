@@ -123,15 +123,15 @@
         <section id="appointment">
             <div class="container">
                 <div class="info">
-                    <h2>Fala Conosco, queremos ouvir-te!</h2>
-                    <p>is a long established fact that a reader will be distracted by the readable content of a page</p>
+                    <h2>Fala Conosco, queremos ouvi-lo!</h2>
+                    <p>A sua opinião é importante para nós. Não hesite em partilhar as suas dúvidas ou sugestões. Estamos sempre prontos para ouvir e ajudar.</p>
         
                     <article>
                             <i><img src="../img/info-icon.png" with="15px" height="15px"></i>
                         <div>
                             <h4>Médicos Experientes</h4>
                             <small>
-                                is a long established fact that a reader will be distracted by the readable content of a page
+                                Os nossos médicos são experientes e dedicados, prontos para fornecer o melhor atendimento possível. A sua saúde é a nossa prioridade.
                             </small>
                         </div>
                     </article>
@@ -141,7 +141,7 @@
                         <div>
                             <h4>Tecnologia Avançada</h4>
                             <small>
-                                is a long established fact that a reader will be distracted by the readable content of a page
+                                Utilizamos tecnologia avançada para garantir um atendimento de alta qualidade e eficácia. Estamos sempre atualizados com os mais recentes avanços na medicina.
                             </small>
                         </div>
                     </article>
@@ -151,7 +151,7 @@
                         <div>
                             <h4>Emergência</h4>
                             <small>
-                                is a long established fact that a reader will be distracted by the readable content of a page
+                                Estamos preparados para lidar com emergências, garantindo uma resposta rápida e eficaz para cuidar da sua saúde quando mais precisa.
                             </small>
                         </div>
                     </article>
