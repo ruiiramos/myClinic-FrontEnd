@@ -104,8 +104,4 @@ select {
     font-size: 16px; 
     cursor: pointer; 
 }
-
-.mark-button:hover {
-    background-color: #03b89f; /* Cor ao passar o mouse */
-}
 </style>
