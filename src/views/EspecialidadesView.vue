@@ -79,7 +79,7 @@ select {
 }
 
 .mark-button {
-    background-color: #04D0AB; 
+    background: linear-gradient(135deg, #480ca8, #4cc9f0); 
     color: white; 
     border: none;
     border-radius: 25px; 
