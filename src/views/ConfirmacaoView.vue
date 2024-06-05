@@ -40,7 +40,7 @@
         this.popupVisible = true;
         setTimeout(() => {
           this.popupVisible = false;
-        }, 2000); // 2 segundos
+        }, 2000); 
       }
     }
   };
@@ -99,7 +99,7 @@
     display: block;
     text-align: center;
     margin-top: 20px;
-    color: #04D0AB; 
+    color: blue; 
     text-decoration: none;
     transition: color 0.3s;
   }
