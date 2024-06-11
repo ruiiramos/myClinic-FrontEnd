@@ -41,15 +41,6 @@ import Sidebar from "../components/sidebar.vue";
   padding: 20px;
 }
 
-select {
-  width: 300px;
-  height: 50px;
-  padding: 10px;
-  margin-top: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
 .white-rectangle {
   width: 1250px; 
   height: 100px;
