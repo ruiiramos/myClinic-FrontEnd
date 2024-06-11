@@ -10,7 +10,7 @@
           <img :src="$route.name === 'dadosmarcacao' ? '../src/img/icons-sidebar/plus-rose.png' : '../src/img/icons-sidebar/plus.png'" alt="Marcação" class="sidebar-icon">
         </router-link>
         <router-link to="/agenda">
-        <img src="../img/icons-sidebar/calendar.png" alt="Agenda" class="sidebar-icon">
+          <img :src="$route.name === 'agenda' ? '../src/img/icons-sidebar/calendar-rose.png' : '../src/img/icons-sidebar/calendar.png'" alt="Marcação" class="sidebar-icon">
       </router-link>
         <router-link to="/medicos">
           <img :src="$route.name === 'medicos' ? '../src/img/icons-sidebar/doctor-rose.png' : '../src/img/icons-sidebar/doctor.png'" alt="Medicos" class="sidebar-icon">
