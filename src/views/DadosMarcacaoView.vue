@@ -122,7 +122,7 @@ export default {
     border-radius: 5px;
   }
   
-  /* Botão Continuar */
+
   .btn-continuar {
     background: linear-gradient(135deg, #480ca8, #4cc9f0);
     color: white;
