@@ -48,9 +48,9 @@ import Sidebar from "../components/sidebar.vue";
   background-color: white; 
   margin-top: 20px; 
   border-radius: 5px;
-  display: flex; /* Layout flexível */
-  justify-content: space-between; /* Espaçar elementos */
-  align-items: center; /* Alinhar verticalmente */
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
   border: 1px solid black;
 }
 
