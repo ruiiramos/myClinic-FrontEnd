@@ -2,7 +2,7 @@
     <div class="sidebar">
       <!-- Conteúdo da barra lateral aqui -->
       <ul class="sidebar-icons">
-        <img src="../img/myclinic.png" alt="Logo" class="sidebar-logo">
+        <img src="../img/myclinic.webp" alt="Logo" class="sidebar-logo">
         <router-link to="/home">
           <img :src="$route.name === 'home' ? '../src/img/icons-sidebar/home-rose.png' : '../src/img/icons-sidebar/home.png'" alt="Home" class="sidebar-icon">
         </router-link>
