@@ -5,8 +5,8 @@
       </div>
       <form class="login-form">
         <div class="input-group">
-          <label for="nUtente">Nº Utente</label>
-          <input type="text" id="nUtente" placeholder="Digite o nº de Utente" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Digite o seu email" required>
         </div>
         <div class="input-group">
           <label for="password">Palavra Passe</label>
