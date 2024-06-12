@@ -66,54 +66,54 @@
             <div class="container">
                 <article>
                     <div class="doctor__image">
-                        <img src="../img/medica.jpg" alt="Médico 1">
+                        <img src="../img/medica.webp" alt="Médico 1">
                     </div>
                     <div class="doctor__details">
                         <h4>Drª. Ana Maia</h4>
                         <small>Psicólga</small>
                     </div>
                     <div class="doctor__socials">
-                        <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.png" width="15px" height="15px"></a>
+                        <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.webp" width="15px" height="15px"></a>
                     </div>
                 </article>
         
                 <article>
                     <div class="doctor__image">
-                        <img src="../img/medica.jpg" alt="Médico 2">
+                        <img src="../img/medica.webp" alt="Médico 2">
                     </div>
                     <div class="doctor__details">
                         <h4>Drª. Ana Maia</h4>
                         <small>Psicólga</small>
                     </div>
                     <div class="doctor__socials">
-                        <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.png" width="15px" height="15px"></a>
+                        <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.webp" width="15px" height="15px"></a>
                     </div>
                     
                 </article>
         
                 <article>
                     <div class="doctor__image">
-                        <img src="../img/medica.jpg" alt="Médico 3">
+                        <img src="../img/medica.webp" alt="Médico 3">
                     </div>
                     <div class="doctor__details">
                         <h4>Drª. Ana Maia</h4>
                         <small>Psicólga</small>
                     </div>
                     <div class="doctor__socials">
-                        <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.png" width="15px" height="15px"></a>
+                        <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.webp" width="15px" height="15px"></a>
                     </div>
                 </article>
         
                 <article>
                     <div class="doctor__image">
-                        <img src="../img/medica.jpg" alt="Médico 4">
+                        <img src="../img/medica.webp" alt="Médico 4">
                     </div>
                     <div class="doctor__details">
                         <h4>Drª. Ana Maia</h4>
                         <small>Psicólga</small>
                     </div>
                     <div class="doctor__socials">
-                        <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.png" width="15px" height="15px"></a>
+                        <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.webp" width="15px" height="15px"></a>
                     </div>
                 </article>
             </div>
@@ -177,16 +177,16 @@
             <div class="container">
                 <article class="contact">
                     <div class="contact__items">
-                        <i><img src="../img/icon-tlm.png" with="20px" height="20px"></i>
+                        <i><img src="../img/icon-tlm.webp" with="20px" height="20px"></i>
                         <h3>Contacto: +351 912 345 678</h3>
                     </div>
                     <div class="contact__items">
-                        <i><img src="../img/email-icon.png" with="20px" height="20px"></i>
+                        <i><img src="../img/email-icon.webp" with="20px" height="20px"></i>
                         <h3>Email: apoio@myclinic.com</h3>
                     </div>
                 </article>
                 <article class="adress">
-                    <i class='bx bx-home'><img src="../img/location-icon.png" with="20px" height="20px"></i>
+                    <i class='bx bx-home'><img src="../img/location-icon.webp" with="20px" height="20px"></i>
                     <a href="https://www.google.com/maps" target="_blank"><h3>Rua da Clinica 34, Porto</h3></a>
                     
                     
@@ -194,10 +194,10 @@
         
                 <article>
                     <div class="footer__socials">
-                        <a href="https://www.facebook.com/" target="_blank"><i><img src="../img/facebook.png" width="20px" height="20px"></i></a>
-                        <a href="https://www.instagram.com/" target="_blank"><i><img src="../img/instagram.png" width="20px" height="20px"></i></a>
-                        <a href="https://www.youtube.com/" target="_blank"><i><img src="../img/youtube.png" width="20px" height="20px"></i></a>
-                        <a href="https://linkedin.com" target="_blank"><i><img src="../img/linkedin-white.png" width="20px" height="20px"></i></a>
+                        <a href="https://www.facebook.com/" target="_blank"><i><img src="../img/facebook.webp" width="20px" height="20px"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank"><i><img src="../img/instagram.webp" width="20px" height="20px"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank"><i><img src="../img/youtube.webp" width="20px" height="20px"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i><img src="../img/linkedin-white.webp" width="20px" height="20px"></i></a>
                     </div> 
                 </article>
             </div>
