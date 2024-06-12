@@ -3,7 +3,7 @@
     <!-- Barra lateral -->
     <Sidebar/>
     <div class="profile">
-      <img src="../img/medica.jpg" alt="Profile Picture" class="profile_image">
+      <img src="../img/medica.webp" alt="Profile Picture" class="profile_image">
       <div class="profile_info">
         <div class="profile_field">
           <label for="name">Nome</label>
