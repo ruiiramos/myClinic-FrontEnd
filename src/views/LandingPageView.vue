@@ -23,7 +23,7 @@
                         <p>Possuimos os melhores protocolos em saúde.</p>
                     </div>
                     <div class="header__image">
-                        <img src="../img/myclinic.png" alt="Header Image">
+                        <img src="../img/myclinic.webp" alt="Header Image">
                     </div>
                 </div>
             </header>

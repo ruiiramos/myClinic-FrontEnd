@@ -1,7 +1,7 @@
 <template>
     <div class="registration-container">
       <div class="logo">
-        <img src="../img/myclinic.png" alt="logo">
+        <img src="../img/myclinic.webp" alt="logo">
       </div>
       <form class="registration-form">
         <div class="column">

@@ -5,7 +5,7 @@
 
         <div class="content">
             <div class="retangulo-bem-vindo">
-                <img src="../img/myclinic.png" alt="logo">
+                <img src="../img/myclinic.webp" alt="logo">
                 <div class="text-container">
                     <h2>Olá Paciente,</h2>
                     <p>Seja bem-vindo à sua página pessoal da myClinic!</p>
