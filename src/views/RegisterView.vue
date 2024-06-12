@@ -149,10 +149,6 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
-  .btn-registrar:hover {
-    background-color: rgb(239, 0, 40);
-  }
 
   </style>
   

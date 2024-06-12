@@ -94,10 +94,6 @@ export default {
   transition: background-color 0.3s;
 }
 
-.btn-entrar:hover {
-  background-color: #04D0AB; /* Verde escuro */
-}
-
 .register-link {
   display: block;
   text-align: center;
@@ -108,6 +104,6 @@ export default {
 }
 
 .register-link:hover {
-  background-color: rgb(239, 0, 40);
+  color: #480ca8; /* Azul escuro */
 }
 </style>
