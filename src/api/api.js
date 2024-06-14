@@ -54,10 +54,10 @@ export async function patch(endpoint, data, token = null) {
 }
 
 async function handleResponse(response) {
-  if (response.status === 200) {
+  if (response.status >= 200 && response.status < 300) {
     return response.data;
   } else {
-    const errorBody = await response.json();
+    const errorBody = await response.data;
     console.error(`Error with status: ${response.status}, body: ${JSON.stringify(errorBody)}, full response: ${JSON.stringify(response)}`);
     throw new Error(`Error with status: ${response.status}, body: ${JSON.stringify(errorBody)}`);
   }

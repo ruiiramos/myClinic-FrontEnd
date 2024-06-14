@@ -42,6 +42,7 @@ export const useUserStore = defineStore('users', {
       },
       async createPacientes(user) {
         try {
+          console.log('Creating user with data:', user);
           const response = await post('/utilizadores/pacientes', user);
           this.users.push(response.data);
           return response.data;
