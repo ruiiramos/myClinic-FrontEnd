@@ -11,6 +11,7 @@ import ConfirmacaoView from '../views/ConfirmacaoView.vue'
 import AgendaView from '../views/AgendaView.vue'
 import DesmarcacaoView from '../views/DesmarcacaoView.vue'
 import ConfirmarEmailView from '../views/ConfirmarEmailView.vue'
+import ForgotPasswordView from '../views/ForgotPasswordView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -74,6 +75,11 @@ const router = createRouter({
       path: '/confirmaremail',
       name: 'confirmaremail',
       component: ConfirmarEmailView
+    },
+    {
+      path: '/forgotpassword',
+      name: 'forgotpassword',
+      component: ForgotPasswordView
     },
 
   ]
