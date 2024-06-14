@@ -53,10 +53,10 @@
           <label for="password">Password</label>
           <input type="password" id="password" v-model="formData.password" placeholder="********" required>
         </div>
-
       </div>
       <button type="submit" class="btn-registrar">Registar</button>
     </form>
+    <div v-if="alertMessage" :class="['alert', alertType]">{{ alertMessage }}</div>
   </div>
 </template>
 
@@ -67,16 +67,18 @@ export default {
     return {
       userStore: useUserStore(),
       formData: {
-      nome: '',
-      genero: '',
-      sistema_saude: '',
-      n_utente: '',
-      email: '',
-      contacto: '',
-      data_nascimento: '',
-      cod_postal: '',
-      password: ''
-    }
+        nome: '',
+        genero: '',
+        sistema_saude: '',
+        n_utente: '',
+        email: '',
+        contacto: '',
+        data_nascimento: '',
+        cod_postal: '',
+        password: ''
+      },
+      alertMessage: '',
+      alertType: ''
     };
   },
   methods: {
@@ -86,12 +88,17 @@ export default {
       try {
         console.log('Plain form data:', plainFormData);
         await userStore.createPacientes(plainFormData);
-        alert('User registered successfully!');
+        this.alertMessage = 'User registered successfully!';
+        this.alertType = 'alert-success';
         this.$router.push('/home');
       } catch (error) {
         console.error('Error registering user:', error);
-        alert('Failed to register user. Please try again.');
+        this.alertMessage = 'Failed to register user. Please try again.';
+        this.alertType = 'alert-failure';
       }
+      setTimeout(() => {
+        this.alertMessage = '';
+      }, 3000);
     }
   }
 };
@@ -106,7 +113,7 @@ export default {
   justify-content: center;
   min-height: 100vh;
   padding: 20px;
-  background: var(--color background);	
+  background: var(--color-background);  
   transition: background-color 0.5s;
   overflow: hidden;
   background: linear-gradient(135deg, #480ca8, #4cc9f0);
@@ -174,5 +181,21 @@ export default {
   transition: background-color 0.3s;
 }
 
+.alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: white;
+  z-index: 1000;
+}
 
+.alert-success {
+  background-color: green;
+}
+
+.alert-failure {
+  background-color: red;
+}
 </style>
