@@ -13,7 +13,7 @@
         <input type="password" id="password" placeholder="Digite a sua Palavra Passe" required>
       </div>
       <button type="submit" class="btn-entrar">Entrar</button>
-      <a href="/register" class="register-link">Quero me Registar</a>
+      <a href="/register" class="register-link">Quero-me Registar</a>
       <a href="/forgotpassword" class="register-link">Esqueci-me da minha Palavra Passe</a>
     </form>
   </div>
