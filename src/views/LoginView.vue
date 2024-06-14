@@ -15,6 +15,7 @@
       <button type="submit" class="btn-entrar">Entrar</button>
       <a href="/register" class="register-link">Quero-me Registar</a>
     </form>
+    <div v-if="alertMessage" :class="['alert', alertType]">{{ alertMessage }}</div>
   </div>
 </template>
 
@@ -28,7 +29,9 @@ export default {
       formData: {
         email: '',
         password: ''
-      }
+      },
+      alertMessage: '',
+      alertType: ''
     }
   },
   methods: {
@@ -38,12 +41,17 @@ export default {
       try {
         console.log('Plain form data:', plainFormData);
         await userStore.loginPacientes(plainFormData.email ,plainFormData.password);
-        alert('User logged in successfully!');
+        this.alertMessage = 'User logged in successfully!';
+        this.alertType = 'alert-success';
         this.$router.push('/home');
       } catch (error) {
         console.error('Error logging in user:', error);
-        alert('Failed to log in user. Please try again.');
+        this.alertMessage = 'Failed to log in user. Please try again.';
+        this.alertType = 'alert-failure';
       }
+      setTimeout(() => {
+        this.alertMessage = '';
+      }, 3000);
     }
   }
 };
@@ -130,5 +138,23 @@ export default {
 
 .register-link:hover {
   color: #480ca8; /* Azul escuro */
+}
+
+.alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: white;
+  z-index: 1000;
+}
+
+.alert-success {
+  background-color: green;
+}
+
+.alert-failure {
+  background-color: red;
 }
 </style>
