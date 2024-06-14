@@ -87,13 +87,13 @@ export default {
         console.log('Plain form data:', plainFormData);
         await userStore.createPacientes(plainFormData);
         alert('User registered successfully!');
+        this.$router.push('/home');
       } catch (error) {
         console.error('Error registering user:', error);
         alert('Failed to register user. Please try again.');
       }
     }
-
-}
+  }
 };
 </script>
 
