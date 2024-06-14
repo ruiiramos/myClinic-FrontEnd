@@ -85,6 +85,8 @@
     padding: 20px;
     background: var(--color-background);
     transition: background-color 0.5s;
+    overflow: hidden;
+    background: linear-gradient(135deg, #480ca8, #4cc9f0);
   }
   
   .logo img {
@@ -109,12 +111,13 @@
   
   .input-group {
     margin-bottom: 20px;
+    color:white;
   }
   
   .input-group label {
     display: block;
     margin-bottom: 5px;
-    color: var(--color-heading);
+    color:white;
   }
   
   .input-group input,
@@ -122,29 +125,29 @@
     width: 100%;
     padding: 10px;
     border: none;
-    border-bottom: 2px solid #6E7179;
+    border-bottom: 2px solid white;
     background-color: transparent;
     outline: none;
+    color:white;
   }
   
   .input-group input:focus,
   .input-group select:focus {
-    border-color: var(--color-border-hover);
+    color:white;;
   }
   
+  .input-group input::placeholder {
+    color: white; /* Cor do texto do placeholder */
+  }
   .btn-registrar {
     width: 100%;
     padding: 10px;
-    background-color: #04D0AB;
+    background-color: #f84c9b;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  .btn-registrar:hover {
-    background-color: #038c6e;
   }
 
   </style>
