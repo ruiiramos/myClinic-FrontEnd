@@ -10,6 +10,7 @@ import HomePageView from '../views/HomePageView.vue'
 import ConfirmacaoView from '../views/ConfirmacaoView.vue'
 import AgendaView from '../views/AgendaView.vue'
 import DesmarcacaoView from '../views/DesmarcacaoView.vue'
+import ConfirmarEmailView from '../views/ConfirmarEmailView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -68,6 +69,11 @@ const router = createRouter({
       path: '/desmarcacao',
       name: 'desmarcacao',
       component: DesmarcacaoView
+    },
+    {
+      path: '/confirmaremail',
+      name: 'confirmaremail',
+      component: ConfirmarEmailView
     },
 
   ]
