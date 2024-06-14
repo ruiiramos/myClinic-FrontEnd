@@ -1,32 +1,80 @@
 <template>
-        <div class="container">
-            <div class="login-container">
-                <form action="index.html">
-                    <h2>Recuperar conta</h2>
-                    <p>Informe o seu e-mail no campo abaixo</p>
-                    <div class="input-div one">
-                        <div class="i">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <input class="input" type="email" placeholder="Email">
-                        </div>
+    <div class="container">
+        <div class="login-container">
+            <form action="index.html">
+                <h2>Recuperar conta</h2>
+                <p>Informe o seu e-mail no campo abaixo</p>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-envelope"></i>
                     </div>
-                    <input type="submit" class="btn" value="Enviar">
-                    <div class="account">
-                        <p>Lembrou da senha ?</p>
-                        <a href="/login" class="login-link">Entrar</a>
+                    <div>
+                        <input class="input" type="email" placeholder="Email">
                     </div>
-                </form>
-            </div>
+                </div>
+                <input type="submit" class="btn" value="Enviar">
+                <div class="account">
+                    <p>Lembrou da senha ?</p>
+                    <a href="/login" class="login-link">Entrar</a>
+                </div>
+            </form>
         </div>
-
+    </div>
 </template>
 
 <script>
-    export default {
-        
+export default {
+    mounted() {
+        // Criando uma variável para "pegar" todos os inputs
+        const inputs = document.querySelectorAll('.input');
+
+        // Função para adicionar o label dinâmico nos inputs
+        function focusFunc() {
+            let parent = this.parentNode.parentNode;
+            parent.classList.add('focus');
+        }
+
+        // Função para recolher o label dinâmico quando houver um clique do mouse fora do form
+        function blurFunc() {
+            let parent = this.parentNode.parentNode;
+            if (this.value == "") {
+                parent.classList.remove('focus');
+            }
+        }
+
+        // Função para adicionar os eventos
+        inputs.forEach(input => {
+            input.addEventListener('focus', focusFunc);
+            input.addEventListener('blur', blurFunc);
+        });
+
+        // Pegando o modal
+        var modal = document.getElementById("modal-terms");
+
+        // Pegando o botão que dispara o modal
+        var btn = document.getElementById("action-modal");
+
+        // Pegando o elemento <span> que fecha o modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Quando o usuário clicar no botão, o modal será exibido 
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // Quando o usuário clicar no <span> (x), o modal será fechado
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // Quando o usuário clicar em qualquer lugar fora do modal, ele será fechado
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     }
+}
 </script>
 
 <style scoped>
