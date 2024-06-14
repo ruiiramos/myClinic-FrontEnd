@@ -64,7 +64,7 @@ export const useUserStore = defineStore('users', {
         try {
           const response = await post('/utilizadores/login/pacientes', { email: email, password: password });
           console.log(response);
-          sessionStorage.setItem('jwt', response.accessToken);
+          sessionStorage.setItem('jwt', response.token);
           return response.data;
         } catch (error) {
           console.error('Error in store logging in:', error);
@@ -75,7 +75,7 @@ export const useUserStore = defineStore('users', {
         try {
           const response = await post('/utilizadores/login/medicos', { email: email, password: password });
           console.log(response);
-          sessionStorage.setItem('jwt', response.accessToken);
+          sessionStorage.setItem('jwt', response.token);
           return response.data;
         } catch (error) {
           console.error('Error in store logging in:', error);

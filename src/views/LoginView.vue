@@ -3,24 +3,49 @@
     <div class="logo">
       <img src="../img/myclinic.webp" alt="logo">
     </div>
-    <form class="login-form">
+    <form class="login-form" @submit.prevent="handleSubmit">
       <div class="input-group">
         <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Digite o seu email" required>
+        <input type="email" id="email" v-model="formData.email" placeholder="Digite o seu email" required>
       </div>
       <div class="input-group">
         <label for="password">Palavra Passe</label>
-        <input type="password" id="password" placeholder="Digite a sua Palavra Passe" required>
+        <input type="password" id="password" v-model="formData.password" placeholder="Digite a sua Palavra Passe" required>
       </div>
       <button type="submit" class="btn-entrar">Entrar</button>
-      <a href="/register" class="register-link">Quero me Registar</a>
+      <a href="/register" class="register-link">Quero-me Registar</a>
     </form>
   </div>
 </template>
 
 <script>
+import router from '@/router';
+import { useUserStore } from '@/stores/user';
 export default {
- 
+  data() {
+    return {
+      userStore: useUserStore(),
+      formData: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    async handleSubmit() {
+      const userStore = useUserStore();
+      const plainFormData = JSON.parse(JSON.stringify(this.formData));
+      try {
+        console.log('Plain form data:', plainFormData);
+        await userStore.loginPacientes(plainFormData.email ,plainFormData.password);
+        alert('User logged in successfully!');
+        this.$router.push('/home');
+      } catch (error) {
+        console.error('Error logging in user:', error);
+        alert('Failed to log in user. Please try again.');
+      }
+    }
+  }
 };
 </script>
 
