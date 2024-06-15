@@ -39,7 +39,7 @@ export default {
       const userStore = useUserStore();
       const plainFormData = JSON.parse(JSON.stringify(this.formData));
       try {
-        console.log('Plain form data:', plainFormData);
+        //console.log('Plain form data:', plainFormData);
         await userStore.loginPacientes(plainFormData.email ,plainFormData.password);
         this.alertMessage = 'User logged in successfully!';
         this.alertType = 'alert-success';

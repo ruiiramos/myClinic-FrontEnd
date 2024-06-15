@@ -4,11 +4,21 @@ const api = axios.create({
   baseURL: 'http://127.0.0.1:3000/', // URL do servidor back-end
 });
 
+api.interceptors.request.use(config => {
+  const token = sessionStorage.getItem('jwt');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+}, error => {
+  return Promise.reject(error);
+});
+
 export async function get(endpoint, params = {}, token = null){
   try {
     console.log("endpoint: " + endpoint);
     console.log("params: " + JSON.stringify(params));
-    console.log("token: " + token);
+    console.log("token: " + sessionStorage.getItem('jwt'));
     const response = await api.get(endpoint, { 
         params: params,
         headers: token ? {

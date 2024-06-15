@@ -98,7 +98,7 @@ export default {
       const userStore = useUserStore();
       const plainFormData = JSON.parse(JSON.stringify(this.formData));
       try {
-        console.log('Plain form data:', plainFormData);
+        //console.log('Plain form data:', plainFormData);
         await userStore.createPacientes(plainFormData);
         this.alertMessage = 'User registered successfully!';
         this.alertType = 'alert-success';
