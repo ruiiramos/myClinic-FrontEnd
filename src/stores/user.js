@@ -6,10 +6,12 @@ export const useUserStore = defineStore('users', {
     state: () => ({
       users: [],
       user: null,
+      isLoggedIn: false,
     }),
     getters: {
       getUsers: (state) => state.users,
       getUser: (state) => state.user,
+      isLoggedIn: (state) => state.isLoggedIn
     },
     actions: {
       async fetchMedicos() {
@@ -65,6 +67,7 @@ export const useUserStore = defineStore('users', {
           const response = await post('/utilizadores/login/pacientes', { email: email, password: password });
           console.log(response);
           sessionStorage.setItem('jwt', response.token);
+          sessionStorage.setItem('user', response.nome);
           return response.data;
         } catch (error) {
           console.error('Error in store logging in:', error);
@@ -81,6 +84,11 @@ export const useUserStore = defineStore('users', {
           console.error('Error in store logging in:', error);
           throw error; 
         }
+      },
+      logout() {
+        this.user = null;
+        this.isLoggedIn = false;
+        sessionStorage.removeItem('jwt');
       },
       // getLoggedUser & updateLoggedUser
     },

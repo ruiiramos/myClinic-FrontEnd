@@ -52,13 +52,15 @@
 <script>
 import Sidebar from "../components/sidebar.vue"; 
 import { useConsultaStore } from '@/stores/consulta';
+import { useUserStore } from '@/stores/user';
 export default {
   components: {
     Sidebar,
   },
   data() {
     return {
-      userStore: useConsultaStore(),
+      consultaStore: useConsultaStore(),
+      userStore: useUserStore(),
       formData: {
         data: '',
         hora: '',
@@ -127,6 +129,25 @@ export default {
         alert('Failed to fetch medicos. Please try again.');
       }
     },
+    async handleSubmit() {
+      const consultaStore = useConsultaStore();
+
+      try {
+        const consultaData = {
+          data: this.formData.data,
+          hora: this.formData.horario,
+          preco_consulta: this.formData.preco_consulta,
+          nome_medico: this.formData.medico,
+          nome_paciente: sessionStorage.getItem('user')
+        };
+
+        await consultaStore.createConsultas(consultaData);
+        alert('Consulta criada com sucesso!');
+      } catch (error) {
+        console.error('Error creating consulta:', error);
+        alert('Falha ao criar consulta. Por favor, tente novamente.');
+      }
+    }
   }
 }
 
