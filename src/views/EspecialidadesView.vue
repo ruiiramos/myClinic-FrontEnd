@@ -5,8 +5,8 @@
 
         <div class="content">
           <select v-model="selectedEspecialidade" required>
-              <option value="" disabled selected>Selecione Especialidade</option>
-              <!-- Opções de especialidades -->
+              <option value="" disabled selected>Selecione uma Especialidade</option>
+              <option v-for="especialidade in especialidades" :value="especialidade.value">{{ especialidade.text }}</option>
           </select>
           
             <div class="white-rectangle">
@@ -27,7 +27,27 @@ import Sidebar from "../components/sidebar.vue";
         },
         data() {
             return {
-                selectedEspecialidade: ''
+                selectedEspecialidade: '',
+                especialidades: [
+                    {text: 'Cardiologia', value: 'Cardiologia'},
+                    {text: 'Dermatologia', value: 'Dermatologia'},
+                    {text: 'Pediatria', value: 'Pediatria'},
+                    {text: 'Endocrinologia', value: 'Endocrinologia'},
+                    {text: 'Estomatologia', value: 'Estomatologia'},
+                    {text: 'Gastrenterologia', value: 'Gastrentologia'},
+                    {text: 'Ginecologia', value: 'Ginecologia'},
+                    {text: 'Hematologia', value: 'Hematologia'},
+                    {text: 'Medicina Geral', value: 'Medicina Geral'},
+                    {text: 'Nefrologia', value: 'Nefrologia'},
+                    {text: 'Neurologia', value: 'Neurologia'},
+                    {text: 'Oftalmologia', value: 'Oftalmologia'},
+                    {text: 'Ortopedia', value: 'Ortopedia'},
+                    {text: 'Otorrinolaringologia', value: 'Otorrinolaringologia'},
+                    {text: 'Psiquiatria', value: 'Psiquiatria'},
+                    {text: 'Radiologia', value: 'Radiologia'},
+                    {text: 'Reumatologia', value: 'Reumatologia'},
+                    {text: 'Urologia', value: 'Urologia'}
+                ],
             }
         }
     }

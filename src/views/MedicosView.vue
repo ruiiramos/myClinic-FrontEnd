@@ -4,7 +4,7 @@
         <Sidebar/>
         <div class="content">
           <select v-model="selectedEspecialidade" required>
-              <option value="" disabled selected>Selecione a Especialidade</option>
+              <option value="" disabled selected>Selecione um médico</option>
               <!-- Opções Médicos -->
           </select>
             <div class="white-rectangle">
