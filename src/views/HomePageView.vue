@@ -7,7 +7,7 @@
             <div class="retangulo-bem-vindo">
                 <img src="../img/myclinic.webp" alt="logo">
                 <div class="text-container">
-                    <h2>Olá Paciente,</h2>
+                    <h2>Olá {{ user }},</h2>
                     <p>Seja bem-vindo à sua página pessoal da myClinic!</p>
                 </div>
             </div>
@@ -21,14 +21,16 @@
 
 <script>
    import Sidebar from "../components/sidebar.vue"; 
+   import { useUserStore } from '@/stores/user';
 
-export default {
-  components: {
-    Sidebar,
-  },
+    export default {
+        components: {
+            Sidebar,
+        },
         data() {
             return {
-                selectedEspecialidade: ''
+                userStore: useUserStore(),
+                user: sessionStorage.getItem('user')
             }
         }
     }

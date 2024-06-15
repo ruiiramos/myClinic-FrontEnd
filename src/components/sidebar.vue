@@ -21,7 +21,7 @@
         <router-link to="/user">
           <img :src="$route.name === 'user' ? '../src/img/icons-sidebar/user-rose.webp' : '../src/img/icons-sidebar/user.webp'" alt="Perfil" class="sidebar-icon">
         </router-link>
-        <router-link to="/login">
+        <router-link to="/">
           <img src="../img/icons-sidebar/logout.webp" alt="Terminar Sessão" class="sidebar-icon">
         </router-link>
       </ul>
