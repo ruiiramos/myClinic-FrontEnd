@@ -12,24 +12,22 @@
         <div class="input-group">
           <label for="genero">Género</label>
           <select id="genero" v-model="formData.genero" required>
-            <option value="" disabled selected>Selecione a Opção</option>
-            <option value="Masculino">Masculino</option>
-            <option value="Feminino">Feminino</option>
+            <option value="" disabled selected>Selecione uma Opção</option>
+            <option v-for="genero in generos" :value="genero.value">{{ genero.text }}</option>
           </select>
         </div>
         <div class="input-group">
           <label for="sistema_saude">Sistema Saúde</label>
           <select id="sistema_saude" v-model="formData.sistema_saude" required>
-            <option value="" disabled selected>Selecione a Opção</option>
-            <option value="ADSE">ADSE</option>
-            <option value="Multicare">Multicare</option>
+            <option value="" disabled selected>Selecione uma Opção</option>
+            <option v-for="sistema in sistemas_saude" :value="sistema.value">{{ sistema.text }}</option>
           </select>
         </div>
       </div>
       <div class="column">
         <div class="input-group">
           <label for="n_utente">Nº Utente</label>
-          <input type="text" id="n_utente" v-model="formData.n_utente" placeholder="Insira nº Utente" required>
+          <input type="text" id="n_utente" v-model="formData.n_utente" placeholder="Insira o seu nº de utente" required>
         </div>
         <div class="input-group">
           <label for="email">Email</label>
@@ -42,7 +40,7 @@
       </div>
       <div class="column">
         <div class="input-group">
-          <label for="data_nascimento">Data Nascimento</label>
+          <label for="data_nascimento">Data de Nascimento</label>
           <input type="date" id="data_nascimento" v-model="formData.data_nascimento" placeholder="XX/XX/XXXX" required>
         </div>
         <div class="input-group">
@@ -78,7 +76,21 @@ export default {
         password: ''
       },
       alertMessage: '',
-      alertType: ''
+      alertType: '',
+      sistemas_saude: [
+        {text: 'ADSE', value: 'ADSE'},
+        {text: 'Medicare', value: 'Medicare'},
+        {text: 'Fidelidade', value: 'Fidelidade'},
+        {text: 'Cofidis', value: 'Cofidis'},
+        {text: 'Médis', value: 'Médis'},
+        {text: 'Ageas', value: 'Ageas'},
+        {text: 'Multicare', value: 'Multicare'},
+        {text: 'Advance Care', value: 'Advance Care'}
+      ],
+      generos: [
+        {text: 'Masculino', value: 'Masculino'},
+        {text: 'Feminino', value: 'Feminino'}
+      ]
     };
   },
   methods: {
