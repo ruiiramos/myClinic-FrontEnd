@@ -1,13 +1,16 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import * as api from '../api/api.js';
 
 export const useConsultaStore = defineStore('consulta', {
   state: () => ({
     consultas: [],
+    consulta: null,
+    especialidadeMedicos: [],
   }),
   getters: {
-    getUsers: (state) => state.users,
-    getUser: (state) => state.user,
+    getConsultas: (state) => state.consultas,
+    getConsulta: (state) => state.consulta,
   },
   actions: {
     async fetchConsultas() {
@@ -21,7 +24,7 @@ export const useConsultaStore = defineStore('consulta', {
     },
     async createConsultas(consulta) {
       try {
-        const response = await post('/consultas', consulta);
+        const response = await api.post('/consultas', consulta);
         this.consultas.push(response.data);
         return response.data;
       } catch (error) {
@@ -41,6 +44,14 @@ export const useConsultaStore = defineStore('consulta', {
         console.error('Error response:', error.response);
         console.error('Error in store updating consulta:', error);
         throw error; 
+      }
+    },
+    async fetchMedicosByEspecialidade(especialidade) {
+      try {
+        const response = await api.get(`/utilizadores/medico/especialidade/${especialidade}`);
+        return response.data;
+      } catch (error) {
+        console.error('Error in store fetching objects:', error);
       }
     },
   },

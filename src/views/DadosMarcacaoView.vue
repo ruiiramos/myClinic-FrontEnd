@@ -1,84 +1,136 @@
 <template>
+
   <div class="container">
       <!-- Barra lateral -->
       <Sidebar/>
-
-    <div class="myclinic">
-      <div class="progress-bar">
-        <!-- Barra de progresso com etapas -->
-        <span class="active">1. Dados da Marcação</span>
-        <span>2. Confirmação</span>
-      </div>
-      <form class="appointment-form" @submit.prevent="submitForm">
-
-        <div class="input-group">
-          <label for="dNascimento">Selecione uma data</label>
-          <input type="date" id="dNascimento" v-model="DataConsulta" required>
-        </div>
-        <!-- Dropdown Horarios -->
-        <select v-model="selectedHorarios" required>
-        <option value="" disabled selected>Selecione Horário</option>
-        <option value="9:00">9:00</option>
-        <option value="10:00">10:00</option>
-        <option value="11:00">11:00</option>
-        <option value="12:00">12:00</option>
-        <option value="14:00">14:00</option>
-        <option value="15:00">15:00</option>
-        <option value="16:00">16:00</option>
-        <option value="17:00">17:00</option>
-        <option value="18:00">18:00</option>
-        
-        </select>
-        <!-- Dropdown para Especialidade -->
-        <select v-model="selectedEspecialidade" required>
-          <option value="" disabled selected>Selecione Especialidade</option>
-          <!-- Opções de especialidades -->
-        </select>
-
-        <!-- Dropdown para Médico -->
-        <select v-model="selectedMedico" required>
-          <option value="" disabled selected>Selecione Médico</option>
-          <!-- Opções de médicos -->
-        </select>
-
-        <!-- Dropdown para Sistema de Saude -->
-        <select v-model="selectedSistemaSaude" required>
-          <option value="" disabled selected>Selecione o seu Sistema de Saude</option>
-          <option value="adse">ADSE</option>
-          <option value="multicare">Multicare</option>
-        </select>
-
-        <!-- Botão Continuar -->
-        <button type="submit" class="btn-continuar">Continuar</button>
-      </form>
+  <div class="myclinic">
+    <div class="progress-bar">
+      <!-- Barra de progresso com etapas -->
+      <span class="active">1. Dados de Marcação</span>
+      <span>2. Confirmação</span>
     </div>
+    <form class="appointment-form" @submit.prevent="handleSubmit">
+
+    <div class="input-group">
+      <label for="data_nascimento">Selecione uma data</label>
+      <input type="date" id="data_nascimento" v-model="formData.data" required>
+    </div>
+    <!-- Dropdown Horarios -->
+    <label for="horarios">Hórario</label>
+    <select id="horarios" v-model="formData.horario" required>
+    <option value="" disabled selected>Selecione um horário</option>
+    <option v-for="horario in horarios" :value="horario.value">{{ horario.text }}</option>
+    
+    </select>
+    <!-- Dropdown para Especialidade -->
+    <label for="especialidade">Especialidade</label>
+    <select id="especialidade" v-model="formData.especialidade" @change="fetchMedicosByEspecialidade" required>
+      <option value="" disabled selected>Selecione uma especialidade</option>
+      <option v-for="especialidade in especialidades" :value="especialidade.value">{{ especialidade.text }}</option>
+    </select>
+
+    <!-- Dropdown para Médico -->
+    <label for="medico">Médico</label>
+    <select id="medico" v-model="formData.medico" required>
+      <option value="" disabled selected>Selecione um médico</option>
+      <option v-for="medico in medicos" :value="medico.value">{{ medico.text }}</option>
+    </select>
+
+    <!-- Dropdown para Sistema de Saude -->
+    <label for="sistema_saude">Sistema de Saúde</label>
+    <select id="sistema_saude" v-model="formData.sistema_saude" required>
+      <option value="" disabled selected>Selecione o seu Sistema de Saude</option>
+      <option v-for="sistema in sistemas_saude" :value="sistema.value">{{ sistema.text }}</option>
+    </select>
+
+    <!-- Botão Continuar -->
+    <button type="submit" class="btn-continuar">Continuar</button>
+  </form>
+</div>
   </div>
 </template>
-
 <script>
 import Sidebar from "../components/sidebar.vue"; 
-
+import { useConsultaStore } from '@/stores/consulta';
 export default {
   components: {
     Sidebar,
   },
   data() {
     return {
-      DataConsulta: '',
-      selectedHorarios: '',
-      selectedEspecialidade: '',
-      selectedMedico: '',
-      selectedSistemaSaude: ''
+      userStore: useConsultaStore(),
+      formData: {
+        data: '',
+        hora: '',
+        preco_consulta: '70.00',
+        medico: '',
+        paciente: '',
+      },
+      horarios: [
+        {text: '09:00', value: '09:00'},
+        {text: '10:00', value: '10:00'},
+        {text: '11:00', value: '11:00'},
+        {text: '12:00', value: '12:00'},
+        {text: '14:00', value: '14:00'},
+        {text: '15:00', value: '15:00'},
+        {text: '16:00', value: '16:00'},
+        {text: '17:00', value: '17:00'},
+        {text: '18:00', value: '18:00'}
+      ],
+      especialidades: [
+        {text: 'Cardiologia', value: 'Cardiologia'},
+        {text: 'Dermatologia', value: 'Dermatologia'},
+        {text: 'Pediatria', value: 'Pediatria'},
+        {text: 'Endocrinologia', value: 'Endocrinologia'},
+        {text: 'Estomatologia', value: 'Estomatologia'},
+        {text: 'Gastrenterologia', value: 'Gastrentologia'},
+        {text: 'Ginecologia', value: 'Ginecologia'},
+        {text: 'Hematologia', value: 'Hematologia'},
+        {text: 'Medicina Geral', value: 'Medicina Geral'},
+        {text: 'Nefrologia', value: 'Nefrologia'},
+        {text: 'Neurologia', value: 'Neurologia'},
+        {text: 'Oftalmologia', value: 'Oftalmologia'},
+        {text: 'Ortopedia', value: 'Ortopedia'},
+        {text: 'Otorrinolaringologia', value: 'Otorrinolaringologia'},
+        {text: 'Psiquiatria', value: 'Psiquiatria'},
+        {text: 'Radiologia', value: 'Radiologia'},
+        {text: 'Reumatologia', value: 'Reumatologia'},
+        {text: 'Urologia', value: 'Urologia'}
+      ],
+      sistemas_saude: [
+        {text: 'ADSE', value: 'ADSE'},
+        {text: 'Medicare', value: 'Medicare'},
+        {text: 'Fidelidade', value: 'Fidelidade'},
+        {text: 'Cofidis', value: 'Cofidis'},
+        {text: 'Médis', value: 'Médis'},
+        {text: 'Ageas', value: 'Ageas'},
+        {text: 'Multicare', value: 'Multicare'},
+        {text: 'Advance Care', value: 'Advance Care'}
+      ],
+      medicos: []
     }
   },
   methods: {
-    // Seus métodos aqui
+    async fetchMedicosByEspecialidade() {
+      const consultaStore = useConsultaStore();
+      try {
+        const especialidade = this.formData.especialidade;
+        const data = `?especialidade=${especialidade}`
+        const response = await consultaStore.fetchMedicosByEspecialidade(data);
+
+        const medicosNomes = response.map(medico => ({text: medico.nome, value: medico.nome}));
+
+        this.medicos = medicosNomes;
+        //console.log(this.medicos);
+      } catch (error) {
+        console.error('Error fetching medicos:', error);
+        alert('Failed to fetch medicos. Please try again.');
+      }
+    },
   }
 }
 
 </script>
-
-
 <style scoped>
 .container {
     display: flex;
