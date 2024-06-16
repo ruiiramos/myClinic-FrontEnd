@@ -6,6 +6,7 @@ export const useUserStore = defineStore('users', {
     state: () => ({
       users: [],
       user: null,
+      loggedUser: null,
       isLoggedIn: false,
     }),
     getters: {
@@ -80,7 +81,6 @@ export const useUserStore = defineStore('users', {
   
           const response = await api.get(`/utilizadores/current`, {}, token);
           this.loggedUser = response.data;
-          console.log('Logged in user:', this.loggedUser);
           return response.data;
         } catch (error) {
           console.error('Error fetching logged-in user:', error);
@@ -98,11 +98,23 @@ export const useUserStore = defineStore('users', {
           throw error; 
         }
       },
-      logout() {
-        this.user = null;
-        this.isLoggedIn = false;
-        sessionStorage.removeItem('jwt');
+      async updatePaciente(updates, id, token) {
+        try {
+            const response = await api.patch(`/utilizadores/pacientes/${id}`, updates, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.error('Error response:', error.response);
+            console.error('Error in store updating paciente:', error);
+            throw error;
+        }
       },
-      // getLoggedUser & updateLoggedUser
+      logout() {
+        sessionStorage.removeItem('jwt');
+        this.loggedUser = null;
+      }
     },
 });
