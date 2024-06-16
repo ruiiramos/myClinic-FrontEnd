@@ -33,42 +33,66 @@ const router = createRouter({
     {
       path: '/dadosmarcacao',
       name: 'dadosmarcacao',
-      component: DadosMarcacaoView
+      component: DadosMarcacaoView,
+      meta:{
+        requiresAuth: true
+      }
     },
     {
       path: '/especialidades',
       name: 'especialidades',
-      component: EspecialidadesView
+      component: EspecialidadesView,
+      meta:{
+        requiresAuth: true
+      }
     },
     {
       path: '/medicos',
       name: 'medicos',
-      component: MedicosView
+      component: MedicosView,
+      meta:{
+        requiresAuth: true
+      }
     },
     {
       path: '/home',
       name: 'home',
-      component: HomePageView
+      component: HomePageView,
+      meta:{
+        requiresAuth: true
+      }
     },
     {
       path: '/user',
       name: 'user',
-      component: UserView
+      component: UserView,
+      meta:{
+        requiresAuth: true
+      }
     },
     {
       path: '/confirmacao',
       name: 'confirmacao',
-      component: ConfirmacaoView
+      component: ConfirmacaoView,
+      meta:{
+        requiresAuth: true
+      }
     },
     {
       path: '/agenda',
       name: 'agenda',
-      component: AgendaView
+      component: AgendaView,
+      meta:{
+        requiresAuth: true
+      }
     },
     {
       path: '/desmarcacao',
       name: 'desmarcacao',
-      component: DesmarcacaoView
+      component: DesmarcacaoView,
+      meta:{
+        requiresAuth: true
+      }
     },
     {
       path: '/confirmaremail',
@@ -77,6 +101,14 @@ const router = createRouter({
     },
 
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && sessionStorage.jwt == undefined) {
+    next("/login")
+  } else {
+    next()
+  }
 })
 
 export default router
