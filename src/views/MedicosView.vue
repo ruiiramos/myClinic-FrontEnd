@@ -3,52 +3,60 @@
         <!-- Barra lateral -->
         <Sidebar/>
         <div class="content">
-          <select v-model="selectedEspecialidade" required>
-              <option value="" disabled selected>Selecione um médico</option>
-              <!-- Opções Médicos -->
-          </select>
-            <div class="white-rectangle">
-              <h2>João Silva</h2>
-                <router-link to="/dadosmarcacao">
-                    <button class="mark-button">Marcar</button>
-                </router-link>
+            <select v-model="selectedMedico" required>
+                <option value="" selected>Selecione um médico</option>
+                <option v-for="medico in medicos" :key="medico.email" :value="medico.nome">
+                    {{ medico.nome }}
+                </option>
+            </select>
+            <div v-for="medico in filteredMedicosBox" :key="medico.email">
+                <Whitebox :medico="medico" />
             </div>
-            <div class="white-rectangle">
-                <h2>João Silva</h2>
-                  <router-link to="/dadosmarcacao">
-                      <button class="mark-button">Marcar</button>
-                  </router-link>
-              </div>
-              <div class="white-rectangle">
-                <h2>João Silva</h2>
-                  <router-link to="/dadosmarcacao">
-                      <button class="mark-button">Marcar</button>
-                  </router-link>
-              </div>
-              <div class="white-rectangle">
-                <h2>João Silva</h2>
-                  <router-link to="/dadosmarcacao">
-                      <button class="mark-button">Marcar</button>
-                  </router-link>
-              </div>
         </div>
     </div>
 </template>
 
 <script>
 import Sidebar from "../components/sidebar.vue"; 
+import Whitebox from "../components/whiteboxMedico.vue"; 
+import { useUserStore } from '@/stores/user';
 
 export default {
   components: {
     Sidebar,
+    Whitebox
   },
-        data() {
-            return {
-                selectedEspecialidade: ''
-            }
-        }
+  data() {
+    return {
+      selectedMedico: '',
+      medicos: [],
+      medicosBox: []
+    };
+  },
+  async created() {
+    const userStore = useUserStore();
+    try {
+      await userStore.fetchMedicos();
+      this.medicos = userStore.medicos;
+      this.medicosBox = userStore.medicos;
+      console.log("Fetched Medicos:", this.medicos);  // Debugging
+    } catch (error) {
+      console.error('Error fetching medicos:', error);
     }
+  },
+  computed: {
+    filteredMedicosBox() {
+      if (!this.selectedMedico) {
+        return this.medicosBox;
+      }
+      return this.medicosBox.filter(medico =>
+        medico.nome === this.selectedMedico
+      );
+    }
+  }
+};
 </script>
+
 
 <style scoped>
 .container {
