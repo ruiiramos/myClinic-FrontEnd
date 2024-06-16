@@ -5,7 +5,7 @@
 
         <div class="content">
           <select v-model="selectedEspecialidade" required>
-              <option value="" selected>Selecione uma Especialidade</option>
+                <option value="" selected>Selecione uma Especialidade</option>
                 <option v-for="especialidade in especialidades" :value="especialidade.value">
                     {{ especialidade.text }}
                 </option>
@@ -21,7 +21,7 @@
 
 <script>
 import Sidebar from "../components/sidebar.vue"; 
-import Whitebox from "../components/whitebox.vue"; 
+import Whitebox from "../components/whiteboxEspecialidade.vue"; 
 import { useConsultaStore } from '@/stores/consulta';
     export default {
         components: {
@@ -30,6 +30,7 @@ import { useConsultaStore } from '@/stores/consulta';
         },
         data() {
             return {
+                consultaStore: useConsultaStore(),
                 selectedEspecialidade: '',
                 especialidades: [
                     {text: 'Cardiologia', value: 'Cardiologia'},

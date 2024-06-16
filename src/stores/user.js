@@ -5,6 +5,8 @@ import * as api from '../api/api.js';
 export const useUserStore = defineStore('users', {
     state: () => ({
       users: [],
+      medicos: [],
+      pacientes: [],
       user: null,
       loggedUser: null,
       isLoggedIn: false,
@@ -18,8 +20,8 @@ export const useUserStore = defineStore('users', {
       async fetchMedicos() {
         try {
           const data = await api.get('/utilizadores/medicos');
-          this.users = data.data;
-          console.log(this.users);
+          this.medicos = data.data;
+          console.log(this.medicos);
         } catch (error) {
           console.error('Error in store fetching objects:', error);
         }
@@ -27,8 +29,8 @@ export const useUserStore = defineStore('users', {
       async fetchPacientes() {
         try {
           const data = await api.get('/utilizadores/pacientes');
-          this.users = data.data;
-          console.log(this.users);
+          this.pacientes = data.data;
+          console.log(this.pacientes);
         } catch (error) {
           console.error('Error in store fetching objects:', error);
         }
