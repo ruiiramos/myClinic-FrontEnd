@@ -53,9 +53,9 @@ export const useUserStore = defineStore('users', {
           throw error; 
         }
       },
-      async validateEmail(id_user,code) {
+      async validateEmail(id_user,codigo) {
         try {
-          const response = await post(`/utilizadores/verify-email`, {id_user: id_user, code: code});
+          const response = await post(`/utilizadores/verify-email`, {id_user: id_user, codigo: codigo});
           return response.data;
         } catch (error) {
           console.error('Error in store validating code:', error);
@@ -67,11 +67,24 @@ export const useUserStore = defineStore('users', {
           const response = await post('/utilizadores/login/pacientes', { email: email, password: password });
           console.log(response);
           sessionStorage.setItem('jwt', response.token);
-          sessionStorage.setItem('user', response.nome);
           return response.data;
         } catch (error) {
           console.error('Error in store logging in:', error);
           throw error; 
+        }
+      },
+      async fetchLoggedUser() {
+        try {
+          const token = this.jwtToken || sessionStorage.getItem('jwt');
+          if (!token) return;
+  
+          const response = await api.get(`/utilizadores/current`, {}, token);
+          this.loggedUser = response.data;
+          console.log('Logged in user:', this.loggedUser);
+          return response.data;
+        } catch (error) {
+          console.error('Error fetching logged-in user:', error);
+          throw error;
         }
       },
       async loginMedicos(email, password) {

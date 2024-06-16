@@ -102,7 +102,7 @@ export default {
         await userStore.createPacientes(plainFormData);
         this.alertMessage = 'User registered successfully!';
         this.alertType = 'alert-success';
-        this.$router.push('/home');
+        this.$router.push('/confirmarEmail');
       } catch (error) {
         console.error('Error registering user:', error);
         this.alertMessage = 'Failed to register user. Please try again.';

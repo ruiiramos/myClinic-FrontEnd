@@ -1,41 +1,75 @@
 <template>
     <div class="container">
       <h2>Verifica a tua Conta</h2>
-      <p>O email foi enviado para fantacydesignss@gmail.com <br/> Confirma o código no teu email.</p>
+      <p>Um email foi enviado para {{ email }}  <br/> Confirma o código no teu email.</p>
       <div class="code-container">
-        <input type="number" class="code" placeholder="0" min="0" max="9" required>
-        <input type="number" class="code" placeholder="0" min="0" max="9" required>
-        <input type="number" class="code" placeholder="0" min="0" max="9" required>
-        <input type="number" class="code" placeholder="0" min="0" max="9" required>
-        <input type="number" class="code" placeholder="0" min="0" max="9" required>
-        <input type="number" class="code" placeholder="0" min="0" max="9" required>
+        <input v-model="codes[0]" ref="code0" type="number" class="code" placeholder="0" min="0" max="9" required>
+        <input v-model="codes[1]" ref="code1" type="number" class="code" placeholder="0" min="0" max="9" required>
+        <input v-model="codes[2]" ref="code2" type="number" class="code" placeholder="0" min="0" max="9" required>
+        <input v-model="codes[3]" ref="code3" type="number" class="code" placeholder="0" min="0" max="9" required>
+        <input v-model="codes[4]" ref="code4" type="number" class="code" placeholder="0" min="0" max="9" required>
+        <input v-model="codes[5]" ref="code5" type="number" class="code" placeholder="0" min="0" max="9" required>
       </div>
-      <button class="confirm-btn" @click="redirectToHome">Confirmar</button>
+      <button class="confirm-btn" @click="verifyEmail">Confirmar</button>
     </div>
   </template>
   
   <script>
+  import { useUserStore } from '@/stores/user';
   export default {
-    mounted() {
-      const codes = document.querySelectorAll('.code')
-      codes[0].focus()
-  
-      codes.forEach((code, idx) => {
-          code.addEventListener('keydown', (e) => {
-              if(e.key >= 0 && e.key <= 9) {
-                  codes[idx].value = ''
-                  setTimeout(() => codes[idx + 1].focus(), 10)
-              } else if(e.key === 'Backspace') {
-                  setTimeout(() => codes[idx - 1].focus(), 10)
-              }
-          })
-      })
-    },
-    methods: {
-      redirectToHome() {
-        this.$router.push('/home')
+    data() {
+      return {
+        userStore: useUserStore(),
+        email: '',
+        verificationCode: '',
+        codes: [null, null, null, null, null, null]
       }
-    }
+    },
+    async created() {
+        try {
+            const loggedUser = await this.userStore.fetchLoggedUser();
+
+            this.email = loggedUser ? loggedUser.email : 'o seu email';
+        } catch (error) {
+            console.error('Error fetching logged-in user:', error);
+        }
+    },
+    mounted() {
+    this.$nextTick(() => {
+      const codes = document.querySelectorAll('.code');
+      for (let i = 0; i < codes.length; i++) {
+        if (this.codes[i] !== null) {
+          codes[i].focus();
+          break;
+        }
+      }
+
+      codes.forEach((code, idx) => {
+        code.addEventListener('keydown', (e) => {
+          if (e.key >= 0 && e.key <= 9) {
+            this.codes[idx] = '';
+            setTimeout(() => codes[idx + 1]?.focus(), 10);
+          } else if (e.key === 'Backspace') {
+            setTimeout(() => codes[idx - 1]?.focus(), 10);
+          }
+        });
+      });
+    });
+  },
+    methods: {
+        async verifyEmail() {
+        try {
+          const loggedUser = await this.userStore.fetchLoggedUser();
+          const verificationCode = this.codes.join('');
+          console.log('Code:', verificationCode);
+          const response = await this.userStore.validateEmail(loggedUser.id_user, verificationCode);
+          console.log('Verification response:', response);
+          this.$router.push('/home');
+        } catch (error) {
+          console.error('Error verifying email:', error);
+        }
+      }
+    },
   }
   </script>
   
