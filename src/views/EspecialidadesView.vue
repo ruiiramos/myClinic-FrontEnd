@@ -5,25 +5,28 @@
 
         <div class="content">
           <select v-model="selectedEspecialidade" required>
-              <option value="" disabled selected>Selecione uma Especialidade</option>
-              <option v-for="especialidade in especialidades" :value="especialidade.value">{{ especialidade.text }}</option>
+              <option value="" selected>Selecione uma Especialidade</option>
+                <option v-for="especialidade in especialidades" :value="especialidade.value">
+                    {{ especialidade.text }}
+                </option>
           </select>
           
-            <div class="white-rectangle">
-              <h2>Psicologia</h2>
-                <router-link to="/dadosmarcacao">
-                    <button class="mark-button">Marcar</button>
-                </router-link>
-            </div>
+        <div v-for="especialidade in filteredEspecialidadesBox" :key="especialidade.id_especialidade">
+            <Whitebox :especialidade="especialidade" />
+        </div>
+
         </div>
     </div>
 </template>
 
 <script>
 import Sidebar from "../components/sidebar.vue"; 
+import Whitebox from "../components/whitebox.vue"; 
+import { useConsultaStore } from '@/stores/consulta';
     export default {
         components: {
             Sidebar,
+            Whitebox
         },
         data() {
             return {
@@ -34,7 +37,7 @@ import Sidebar from "../components/sidebar.vue";
                     {text: 'Pediatria', value: 'Pediatria'},
                     {text: 'Endocrinologia', value: 'Endocrinologia'},
                     {text: 'Estomatologia', value: 'Estomatologia'},
-                    {text: 'Gastrenterologia', value: 'Gastrentologia'},
+                    {text: 'Gastrenterologia', value: 'Gastrenterologia'},
                     {text: 'Ginecologia', value: 'Ginecologia'},
                     {text: 'Hematologia', value: 'Hematologia'},
                     {text: 'Medicina Geral', value: 'Medicina Geral'},
@@ -48,8 +51,28 @@ import Sidebar from "../components/sidebar.vue";
                     {text: 'Reumatologia', value: 'Reumatologia'},
                     {text: 'Urologia', value: 'Urologia'}
                 ],
+                especialidadesBox: []
             }
+        },
+        async created() {
+            const consultaStore = useConsultaStore();
+            try {
+                await consultaStore.fetchEspecialidades();
+                this.especialidadesBox = consultaStore.especialidades;
+            } catch (error) {
+                console.error('Error fetching especialidades:', error);
+            }
+        },
+        computed: {
+        filteredEspecialidadesBox() {
+            if (!this.selectedEspecialidade) {
+                return this.especialidadesBox;
+            }
+            return this.especialidadesBox.filter(especialidade =>
+                especialidade.especialidade === this.selectedEspecialidade
+            );
         }
+    }
     }
 </script>
 

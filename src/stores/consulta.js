@@ -5,6 +5,7 @@ import * as api from '../api/api.js';
 export const useConsultaStore = defineStore('consulta', {
   state: () => ({
     consultas: [],
+    especialidades: [],
     consulta: null,
     especialidadeMedicos: [],
   }),
@@ -18,6 +19,15 @@ export const useConsultaStore = defineStore('consulta', {
         const data = await api.get('/consultas');
         this.consultas = data.data;
         console.log(this.consultas);
+      } catch (error) {
+        console.error('Error in store fetching objects:', error);
+      }
+    },
+    async fetchEspecialidades() {
+      try {
+        const data = await api.get('/especialidades');
+        this.especialidades = data.data;
+        console.log(this.especialidades);
       } catch (error) {
         console.error('Error in store fetching objects:', error);
       }
