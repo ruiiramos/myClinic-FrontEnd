@@ -34,14 +34,14 @@
             }
         },
         async created() {
-        try {
-            const loggedUser = await this.userStore.fetchLoggedUser();
+            try {
+                const loggedUser = await this.userStore.fetchLoggedUser();
 
-            this.userName = loggedUser ? loggedUser.nome : 'Paciente';
-        } catch (error) {
-            console.error('Error fetching logged-in user:', error);
+                this.userName = loggedUser ? loggedUser.nome : 'Paciente';
+            } catch (error) {
+                console.error('Error fetching logged-in user:', error);
+            }
         }
-    }
     }
 </script>
 

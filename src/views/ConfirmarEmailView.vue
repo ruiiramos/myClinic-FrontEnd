@@ -61,9 +61,9 @@
         try {
           const loggedUser = await this.userStore.fetchLoggedUser();
           const verificationCode = this.codes.join('');
-          console.log('Code:', verificationCode);
+          // console.log('Code:', verificationCode);
           const response = await this.userStore.validateEmail(loggedUser.id_user, verificationCode);
-          console.log('Verification response:', response);
+          // console.log('Verification response:', response);
           this.$router.push('/home');
         } catch (error) {
           console.error('Error verifying email:', error);

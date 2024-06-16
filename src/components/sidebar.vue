@@ -28,14 +28,16 @@
     </div>
   </template>
   
-  <script>
+<script>
+  import { useUserStore } from '@/stores/user';
   export default {
     data() {
 
     },
     methods: {
       logout() {
-        sessionStorage.removeItem('jwt');
+        const userStore = useUserStore();
+        userStore.logout();
       },
     }
   }
