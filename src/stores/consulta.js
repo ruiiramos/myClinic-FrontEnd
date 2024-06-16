@@ -5,6 +5,7 @@ import * as api from '../api/api.js';
 export const useConsultaStore = defineStore('consulta', {
   state: () => ({
     consultas: [],
+    consultasPacientes: [],
     especialidades: [],
     consulta: null,
     especialidadeMedicos: [],
@@ -64,5 +65,15 @@ export const useConsultaStore = defineStore('consulta', {
         console.error('Error in store fetching objects:', error);
       }
     },
+    async fetchConsultasByPaciente(id) {
+      try {
+        const response = await api.get(`/consultas/paciente/${id}`);
+        console.log('Response Data:', response.data);
+        this.consultas = response.data;
+        console.log('Fetched Consultas:', this.consultas);
+      } catch (error) {
+        console.error('Error in store fetching objects:', error);
+      }
+    }
   },
 })

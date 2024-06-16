@@ -1,31 +1,43 @@
 <template>
   <div class="container">
-      <!-- Barra lateral -->
-      <Sidebar/>
+    <!-- Barra lateral -->
+    <Sidebar/>
 
-      <div class="content">
-          <div class="white-rectangle">
-            <h2>Consulta de Psicologia - 14/05/02023, 16:00h</h2>
-              <router-link to="desmarcacao">
-                  <button class="desmarcar-button">Desmarcar Consulta</button>
-              </router-link>
-          </div>
-      </div>
+    <div v-for="consulta in filteredConsultas" :key="consulta.id_consulta">
+      <Whitebox :consulta="consulta"/>
+    </div>
   </div>
 </template>
 
 <script>
 import Sidebar from "../components/sidebar.vue"; 
-  export default {
-      components: {
-          Sidebar,
-      },
-      data() {
-          return {
-              selectedEspecialidade: ''
-          }
-      }
+import Whitebox from "../components/whiteboxConsulta.vue"; 
+import { useConsultaStore } from '@/stores/consulta';
+import { useUserStore } from '@/stores/user';
+
+export default {
+  components: {
+    Sidebar,
+    Whitebox
+  },
+  data() {
+    return {
+      filteredConsultas: []
+    };
+  },
+  async created() {
+    try {
+      const userStore = useUserStore();
+      const loggedUser = await userStore.fetchLoggedUser();
+      const consultaStore = useConsultaStore();
+      await consultaStore.fetchConsultasByPaciente(loggedUser.id_user);
+      this.filteredConsultas = consultaStore.consultas; // Correctly assign consultas to filteredConsultas
+      console.log('Consultas:', this.filteredConsultas);
+    } catch (error) {
+      console.error('Error fetching consultas:', error);
+    }
   }
+};
 </script>
 
 <style scoped>
