@@ -7,7 +7,7 @@
             <div class="retangulo-bem-vindo">
                 <img src="../img/myclinic.webp" alt="logo">
                 <div class="text-container">
-                    <h2>Olá {{ user }},</h2>
+                    <h2>Olá {{ userName }},</h2>
                     <p>Seja bem-vindo à sua página pessoal da myClinic!</p>
                 </div>
             </div>
@@ -30,9 +30,18 @@
         data() {
             return {
                 userStore: useUserStore(),
-                user: sessionStorage.getItem('user')
+                userName: ''
             }
+        },
+        async created() {
+        try {
+            const loggedUser = await this.userStore.fetchLoggedUser();
+
+            this.userName = loggedUser ? loggedUser.nome : 'Paciente';
+        } catch (error) {
+            console.error('Error fetching logged-in user:', error);
         }
+    }
     }
 </script>
 

@@ -131,6 +131,7 @@ export default {
     },
     async handleSubmit() {
       const consultaStore = useConsultaStore();
+      const loggedUser = await this.userStore.fetchLoggedUser();
 
       try {
         const consultaData = {
@@ -138,7 +139,7 @@ export default {
           hora: this.formData.horario,
           preco_consulta: this.formData.preco_consulta,
           nome_medico: this.formData.medico,
-          nome_paciente: sessionStorage.getItem('user')
+          nome_paciente: loggedUser.nome
         };
 
         await consultaStore.createConsultas(consultaData);
