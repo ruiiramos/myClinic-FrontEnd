@@ -10,6 +10,7 @@
         <input v-model="codes[4]" ref="code4" type="number" class="code" placeholder="0" min="0" max="9" required>
         <input v-model="codes[5]" ref="code5" type="number" class="code" placeholder="0" min="0" max="9" required>
       </div>
+      <p>Não recebeu email ?</p><a href="/login" class="login-link">Reenviar</a>
       <button class="confirm-btn" @click="verifyEmail">Confirmar</button>
     </div>
   </template>
@@ -130,5 +131,8 @@
     border-radius: 5px;
     cursor: pointer;
   }
+  .login-link{
+    color: blue; 
+    }
   </style>
   
