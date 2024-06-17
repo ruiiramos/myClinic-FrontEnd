@@ -2,9 +2,10 @@
   <div class="container">
     <!-- Barra lateral -->
     <Sidebar/>
-
-    <div v-for="consulta in filteredConsultas" :key="consulta.id_consulta">
-      <Whitebox :consulta="consulta"/>
+    <div id="content">
+      <div v-for="consulta in filteredConsultas" :key="consulta.id_consulta">
+        <Whitebox :consulta="consulta"/>
+      </div>
     </div>
   </div>
 </template>
