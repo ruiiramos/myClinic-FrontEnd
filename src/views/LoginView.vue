@@ -14,6 +14,7 @@
       </div>
       <button type="submit" class="btn-entrar">Entrar</button>
       <a href="/register" class="register-link">Quero-me Registar</a>
+      <a href="/forgotpassword" class="register-link">Esqueci-me da palavra passe!</a>
     </form>
     <div v-if="alertMessage" :class="['alert', alertType]">{{ alertMessage }}</div>
   </div>
