@@ -173,9 +173,11 @@ export default {
   color: white
 }
 
-.input-group input:focus,
-.input-group select:focus {
+.input-group input:focus{
   color: white;
+}
+.input-group select:focus {
+  color: rgb(0, 0, 0);
 }
 
 .input-group input::placeholder {
