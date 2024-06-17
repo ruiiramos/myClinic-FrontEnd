@@ -1,58 +1,57 @@
 <template>
-
   <div class="container">
       <!-- Barra lateral -->
       <Sidebar/>
-  <div class="myclinic">
-    <div class="progress-bar">
-      <!-- Barra de progresso com etapas -->
-      <span class="active">1. Dados de Marcação</span>
-      <span>2. Confirmação</span>
-    </div>
-    <form class="appointment-form" @submit.prevent="handleSubmit">
-
-    <div class="input-group">
-      <label for="data_nascimento">Selecione uma data</label>
-      <input type="date" id="data_nascimento" v-model="formData.data" required>
-    </div>
-    <!-- Dropdown Horarios -->
-    <label for="horarios">Hórario</label>
-    <select id="horarios" v-model="formData.horario" required>
-    <option value="" disabled selected>Selecione um horário</option>
-    <option v-for="horario in horarios" :value="horario.value">{{ horario.text }}</option>
-    
-    </select>
-    <!-- Dropdown para Especialidade -->
-    <label for="especialidade">Especialidade</label>
-    <select id="especialidade" v-model="formData.especialidade" @change="fetchMedicosByEspecialidade" required>
-      <option value="" disabled selected>Selecione uma especialidade</option>
-      <option v-for="especialidade in especialidades" :value="especialidade.value">{{ especialidade.text }}</option>
-    </select>
-
-    <!-- Dropdown para Médico -->
-    <label for="medico">Médico</label>
-    <select id="medico" v-model="formData.medico" required>
-      <option value="" disabled selected>Selecione um médico</option>
-      <option v-for="medico in medicos" :value="medico.value">{{ medico.text }}</option>
-    </select>
-
-    <!-- Dropdown para Sistema de Saude -->
-    <label for="sistema_saude">Sistema de Saúde</label>
-    <select id="sistema_saude" v-model="formData.sistema_saude" required>
-      <option value="" disabled selected>Selecione o seu Sistema de Saude</option>
-      <option v-for="sistema in sistemas_saude" :value="sistema.value">{{ sistema.text }}</option>
-    </select>
-
-    <!-- Botão Continuar -->
-    <button type="submit" class="btn-continuar">Continuar</button>
-  </form>
-</div>
+      <div class="myclinic">
+        <form class="appointment-form" @submit.prevent="handleSubmit">
+          <div class="input-group">
+            <label for="data_nascimento">Selecione uma data</label>
+            <input type="date" id="data_nascimento" v-model="formData.data" required>
+          </div>
+  
+          <!-- Dropdown para Especialidade -->
+          <label for="especialidade">Especialidade</label>
+          <select id="especialidade" v-model="formData.especialidade" @change="fetchMedicosByEspecialidade" required>
+            <option value="" disabled selected>Selecione uma especialidade</option>
+            <option v-for="especialidade in especialidades" :value="especialidade.value">{{ especialidade.text }}</option>
+          </select>
+  
+          <!-- Dropdown para Médico -->
+          <label for="medico">Médico</label>
+          <select id="medico" v-model="formData.medico" required>
+            <option value="" disabled selected>Selecione um médico</option>
+            <option v-for="medico in medicos" :value="medico.value">{{ medico.text }}</option>
+          </select>
+  
+          <!-- Dropdown Horarios -->
+          <label for="horarios">Hórario</label>
+          <select id="horarios" v-model="formData.horario" required>
+            <option value="" disabled selected>Selecione um horário</option>
+            <option v-for="horario in horarios" :value="horario.value">{{ horario.text }}</option>
+          </select>
+  
+          <!-- Dropdown para Sistema de Saude -->
+          <label for="sistema_saude">Sistema de Saúde</label>
+          <select id="sistema_saude" v-model="formData.sistema_saude" required>
+            <option value="" disabled selected>Selecione o seu Sistema de Saude</option>
+            <option v-for="sistema in sistemas_saude" :value="sistema.value">{{ sistema.text }}</option>
+          </select>
+  
+          <!-- Botão Continuar -->
+          <button type="submit" class="btn-continuar">Marcar Consulta</button>
+        </form>
+        <div v-if="notification.message" :class="['notification', notification.type]">
+          {{ notification.message }}
+        </div>
+      </div>
   </div>
 </template>
+
 <script>
 import Sidebar from "../components/sidebar.vue"; 
 import { useConsultaStore } from '@/stores/consulta';
 import { useUserStore } from '@/stores/user';
+
 export default {
   components: {
     Sidebar,
@@ -63,7 +62,7 @@ export default {
       userStore: useUserStore(),
       formData: {
         data: '',
-        hora: '',
+        horario: '',
         preco_consulta: '70.00',
         medico: '',
         paciente: '',
@@ -109,7 +108,11 @@ export default {
         {text: 'Multicare', value: 'Multicare'},
         {text: 'Advance Care', value: 'Advance Care'}
       ],
-      medicos: []
+      medicos: [],
+      notification: {
+        message: '',
+        type: '' // 'success' or 'error'
+      }
     }
   },
   methods: {
@@ -123,10 +126,9 @@ export default {
         const medicosNomes = response.map(medico => ({text: medico.nome, value: medico.nome}));
 
         this.medicos = medicosNomes;
-        //console.log(this.medicos);
       } catch (error) {
         console.error('Error fetching medicos:', error);
-        alert('Failed to fetch medicos. Please try again.');
+        this.showNotification('Failed to fetch medicos. Please try again.', 'error');
       }
     },
     async handleSubmit() {
@@ -143,100 +145,108 @@ export default {
         };
 
         await consultaStore.createConsultas(consultaData);
-        alert('Consulta criada com sucesso!');
+        this.showNotification('Consulta criada com sucesso!', 'success');
       } catch (error) {
         console.error('Error creating consulta:', error);
-        alert('Falha ao criar consulta. Por favor, tente novamente.');
+        this.showNotification('Falha ao criar consulta. Por favor, tente novamente.', 'error');
       }
+    },
+    showNotification(message, type) {
+      this.notification.message = message;
+      this.notification.type = type;
+      setTimeout(() => {
+        this.notification.message = '';
+        this.notification.type = '';
+        if (type === 'success') {
+          this.$router.push('/home');
+        }
+      }, 2000);
     }
   }
 }
-
 </script>
+
+
 <style scoped>
 .container {
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
 }
-  
+
 .myclinic {
-    font-family: 'Arial', sans-serif;
-    color: #000000;
-    padding: 20px;
-    margin-left: auto;
-    margin-right: auto;
+  font-family: 'Arial', sans-serif;
+  color: #000000;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  }
-  
-    /* Barra de progresso e etapas */
-    .progress-bar {
-      margin-bottom: 20px;  
-    }
-    
-    .progress-bar span {
-      background: #f0f0f0;
-      padding: 5px 10px;
-      border-radius: 5px;
-      margin-right: 25%;
-    }
-  
-  .progress-bar span.active {
-    margin-left: 15%;
-    background: linear-gradient(135deg, #480ca8, #4cc9f0);
-    color: black;
-  }
-  
-  /* Estilos dos dropdowns */
-  select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
+/* Estilos dos dropdowns */
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
-  .btn-continuar {
-    background: linear-gradient(135deg, #480ca8, #4cc9f0);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .btn-continuar:hover {
-    background-color: blue;
-  }
+.btn-continuar {
+  background: linear-gradient(135deg, #480ca8, #4cc9f0);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  .input-group {
-    margin-bottom: 20px;
-    
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: var(--color-heading);
-  }
-  
-  .input-group input,
-  .input-group select {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-bottom: 2px solid #6E7179;
-    background-color: transparent;
-    outline: none;
-  }
-  
-  .input-group input:focus,
-  .input-group select:focus {
-    border-color: var(--color-border-hover);
-  }
-  
-  
+.btn-continuar:hover {
+  background-color: blue;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--color-heading);
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid #6E7179;
+  background-color: transparent;
+  outline: none;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: var(--color-border-hover);
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.notification.success {
+  background-color: green;
+}
+
+.notification.error {
+  background-color: red;
+}
 </style>
