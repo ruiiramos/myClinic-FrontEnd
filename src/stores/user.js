@@ -77,6 +77,15 @@ export const useUserStore = defineStore('users', {
           throw error; 
         }
       },
+      async forgotPassword(email) {
+        try {
+          const response = await post(`/utilizadores/forgot-password`, {email: email});
+          return response.data;
+        } catch (error) {
+          console.error('Error in store resending email:', error);
+          throw error; 
+        }
+      },
       async loginPacientes(email, password) {
         try {
           const response = await post('/utilizadores/login/pacientes', { email: email, password: password });

@@ -3,16 +3,16 @@
         <div class="login-container">
             <form action="index.html">
                 <h2>Recuperar conta</h2>
-                <p>Informe o seu e-mail no campo abaixo</p>
+                <p>Introduza o seu e-mail no campo abaixo</p>
                 <div class="input-div one">
                     <div class="i">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <div>
-                        <input class="input" type="email" placeholder="Email">
+                        <input class="input" type="email" placeholder="Email" v-model="email">
                     </div>
                 </div>
-                <input type="submit" class="btn" value="Enviar">
+                <input type="submit" class="btn" value="Enviar" @click.prevent="forgotPassword">
                 <div class="account">
                     <a href="/login" class="login-link">Entrar</a>
                 </div>
@@ -23,8 +23,23 @@
 </template>
 
 <script>
+import { useUserStore } from '@/stores/user';
 export default {
-    
+    data() {
+        return {
+            email: '',
+            userStore: useUserStore()
+        }
+    },
+    methods: {
+        async forgotPassword() {
+            try {
+                const response = await this.userStore.forgotPassword(this.email);
+            } catch (error) {
+                console.error('Error in store resending email:', error);
+            }
+        }
+    }
 }
 </script>
 
@@ -173,6 +188,11 @@ flex-wrap: wrap;
 margin: 0.5rem;
 }
 .login-link{
-color: blue; /* Azul escuro */
+color: blue;
+transition: color 0.3s;
+}
+
+.login-link:hover {
+    color: #480ca8;
 }
 </style>
