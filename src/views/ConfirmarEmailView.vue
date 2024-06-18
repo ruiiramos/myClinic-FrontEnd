@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-      <h2>Verifica a tua Conta</h2>
-      <p>Um email foi enviado para {{ email }}  <br/> Confirma o código no teu email.</p>
+      <h2>Verifica a sua conta</h2>
+      <p>Um email foi enviado para {{ email }}  <br/> Confirme o código no seu email.</p>
       <div class="code-container">
         <input v-model="codes[0]" ref="code0" type="number" class="code" placeholder="0" min="0" max="9" required>
         <input v-model="codes[1]" ref="code1" type="number" class="code" placeholder="0" min="0" max="9" required>
@@ -29,7 +29,6 @@
     async created() {
         try {
             const loggedUser = await this.userStore.fetchLoggedUser();
-
             this.email = loggedUser ? loggedUser.email : 'o seu email';
         } catch (error) {
             console.error('Error fetching logged-in user:', error);
@@ -60,10 +59,9 @@
     methods: {
         async verifyEmail() {
         try {
-          const loggedUser = await this.userStore.fetchLoggedUser();
+          const loggedUser = sessionStorage.getItem('user_id');
           const verificationCode = this.codes.join('');
-          // console.log('Code:', verificationCode);
-          const response = await this.userStore.validateEmail(loggedUser.id_user, verificationCode);
+          const response = await this.userStore.validateEmail(loggedUser, verificationCode);
           // console.log('Verification response:', response);
           this.$router.push('/home');
         } catch (error) {

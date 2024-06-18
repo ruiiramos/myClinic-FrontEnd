@@ -99,7 +99,8 @@ export default {
       const plainFormData = JSON.parse(JSON.stringify(this.formData));
       try {
         //console.log('Plain form data:', plainFormData);
-        await userStore.createPacientes(plainFormData);
+        const response = await userStore.createPacientes(plainFormData);
+        userStore.loggedUser = response;
         this.alertMessage = 'User registered successfully!';
         this.alertType = 'alert-success';
         this.$router.push('/confirmarEmail');
