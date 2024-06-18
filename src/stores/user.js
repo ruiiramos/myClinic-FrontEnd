@@ -50,7 +50,9 @@ export const useUserStore = defineStore('users', {
           console.log('Creating user with data:', user);
           const response = await post('/utilizadores/pacientes', user);
           sessionStorage.setItem('user_id', response.id_user)
-          this.users.push(response.data);
+          sessionStorage.setItem('email', user.email)
+          this.user = user;
+          console.log('This ponto user:', this.user);
           return response.data;
         } catch (error) {
           console.error('Error in store creating user:', error);
@@ -71,7 +73,7 @@ export const useUserStore = defineStore('users', {
           const response = await post(`/utilizadores/resend-email`, {id_user: id_user, email: email});
           return response.data;
         } catch (error) {
-          console.error('Error in store validating code:', error);
+          console.error('Error in store resending email:', error);
           throw error; 
         }
       },

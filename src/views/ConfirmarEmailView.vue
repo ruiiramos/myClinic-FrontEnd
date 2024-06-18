@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <h2>Verifica a sua conta</h2>
+      <h2>Verifique a sua conta</h2>
       <p>Um email foi enviado para {{ email }}  <br/> Confirme o código no seu email.</p>
       <div class="code-container">
         <input v-model="codes[0]" ref="code0" type="number" class="code" placeholder="0" min="0" max="9" required>
@@ -10,7 +10,9 @@
         <input v-model="codes[4]" ref="code4" type="number" class="code" placeholder="0" min="0" max="9" required>
         <input v-model="codes[5]" ref="code5" type="number" class="code" placeholder="0" min="0" max="9" required>
       </div>
-      <p>Não recebeu email ?</p><a href="/login" class="login-link">Reenviar</a>
+      <div class="resend-container">
+        <p>Não recebeu email? <button class="resend-button" @click="resendEmail">Reenviar</button></p>
+      </div>
       <button class="confirm-btn" @click="verifyEmail">Confirmar</button>
     </div>
   </template>
@@ -28,8 +30,8 @@
     },
     async created() {
         try {
-            const loggedUser = await this.userStore.fetchLoggedUser();
-            this.email = loggedUser ? loggedUser.email : 'o seu email';
+            const loggedUser = sessionStorage.getItem('email');
+            this.email = loggedUser ? loggedUser : 'o seu email';
         } catch (error) {
             console.error('Error fetching logged-in user:', error);
         }
@@ -57,17 +59,31 @@
     });
   },
     methods: {
-        async verifyEmail() {
+      async verifyEmail() {
         try {
           const loggedUser = sessionStorage.getItem('user_id');
           const verificationCode = this.codes.join('');
           const response = await this.userStore.validateEmail(loggedUser, verificationCode);
           // console.log('Verification response:', response);
           this.$router.push('/home');
+          sessionStorage.removeItem('user_id');
+          sessionStorage.removeItem('email')
         } catch (error) {
           console.error('Error verifying email:', error);
         }
-      }
+      },
+      async resendEmail() {
+        try {
+          const loggedUserId = sessionStorage.getItem('user_id');
+          const loggedUserEmail = sessionStorage.getItem('email');
+          const createdPaciente = this.userStore.user;
+          // console.log('Created paciente:', createdPaciente);
+          const response = await this.userStore.resendEmail(loggedUserId, loggedUserEmail);
+          // console.log('Verification response:', response);
+        } catch (error) {
+          console.error('Error resending email:', error);
+        }
+      },
     },
   }
   </script>
@@ -132,5 +148,20 @@
   .login-link{
     color: blue; 
     }
+
+  .resend-button {
+    background: none;
+    color: blue;
+    border: none;
+    padding: 0;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  .resend-button:hover {
+    color: rgb(39, 132, 162); /* Change color on hover */
+  }
   </style>
   
