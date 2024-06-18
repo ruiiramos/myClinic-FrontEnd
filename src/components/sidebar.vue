@@ -45,10 +45,15 @@
   
   <style scoped>
   .sidebar {
+    display: flex;
+    position: sticky;
+    top: 0;
     width: 250px;
     background-color: #f0f0f0;
-    padding: 20px;
-    height: 100vh;
+    padding-bottom: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 100%;
     background: linear-gradient(135deg, #480ca8, #4cc9f0);
   }
   
