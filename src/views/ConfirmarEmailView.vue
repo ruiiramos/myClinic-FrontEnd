@@ -158,10 +158,11 @@
     text-decoration: underline;
     cursor: pointer;
     margin-bottom: 10px;
+    transition: color 0.3s;
   }
 
   .resend-button:hover {
-    color: rgb(39, 132, 162); /* Change color on hover */
+    color: rgb(39, 132, 162);
   }
   </style>
   

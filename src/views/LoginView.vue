@@ -14,7 +14,7 @@
       </div>
       <button type="submit" class="btn-entrar">Entrar</button>
       <a href="/register" class="register-link">Quero-me Registar</a>
-      <a href="/forgotpassword" class="register-link">Esqueci-me da palavra passe!</a>
+      <a href="/forgotpassword" class="forgotPassword-link">Esqueci-me da palavra passe!</a>
     </form>
     <div v-if="alertMessage" :class="['alert', alertType]">{{ alertMessage }}</div>
   </div>
@@ -137,7 +137,20 @@ export default {
   transition: color 0.3s;
 }
 
+.forgotPassword-link {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: white; /* Azul */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
 .register-link:hover {
+  color: #480ca8; /* Azul escuro */
+}
+
+.forgotPassowrd-link:hover {
   color: #480ca8; /* Azul escuro */
 }
 

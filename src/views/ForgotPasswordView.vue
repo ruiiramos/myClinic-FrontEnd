@@ -14,7 +14,6 @@
                 </div>
                 <input type="submit" class="btn" value="Enviar">
                 <div class="account">
-                    <p>Lembrou da senha ?</p>
                     <a href="/login" class="login-link">Entrar</a>
                 </div>
             </form>
