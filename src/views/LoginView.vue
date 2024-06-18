@@ -141,17 +141,17 @@ export default {
   display: block;
   text-align: center;
   margin-top: 10px;
-  color: white; /* Azul */
+  color: white;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .register-link:hover {
-  color: #480ca8; /* Azul escuro */
+  color: #480ca8;
 }
 
 .forgotPassowrd-link:hover {
-  color: #480ca8; /* Azul escuro */
+  color: #480ca8;
 }
 
 .alert {
