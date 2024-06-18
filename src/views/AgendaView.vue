@@ -4,7 +4,7 @@
     <Sidebar/>
     <div id="content">
       <div v-for="consulta in filteredConsultas" :key="consulta.id_consulta">
-        <Whitebox :consulta="consulta"/>
+        <Whitebox :consulta="consulta" @desmarcar-consulta="desmarcarConsulta"/>
       </div>
     </div>
   </div>
@@ -36,6 +36,17 @@ export default {
       console.log('Consultas:', this.filteredConsultas);
     } catch (error) {
       console.error('Error fetching consultas:', error);
+    }
+  },
+  methods: {
+    async desmarcarConsulta(id) {
+      try {
+        const consultaStore = useConsultaStore();
+        await consultaStore.deleteConsulta(id);
+        this.filteredConsultas = consultaStore.consultas;
+      } catch (error) {
+        console.error('Error a desmarcar consulta:', error);
+      }
     }
   }
 };

@@ -74,6 +74,16 @@ export const useConsultaStore = defineStore('consulta', {
       } catch (error) {
         console.error('Error in store fetching objects:', error);
       }
-    }
+    },
+    async deleteConsulta(id) {
+      try {
+        const response = await api.del(`/consultas/${id}`);
+        this.consultas = this.consultas.filter(consulta => consulta.id_consulta !== id);
+        return response;
+      } catch (error) {
+        console.error('Error in store deleting consulta:', error);
+        throw error;
+      }
+    },
   },
 })

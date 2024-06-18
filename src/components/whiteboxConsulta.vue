@@ -2,7 +2,7 @@
     <div class="white-rectangle">
         <h2>Consulta com o Dr. {{ consulta.medico.nome }} - {{ formatDate(consulta.data) }}, {{ formatTime(consulta.hora) }}h</h2>
         <router-link to="desmarcacao">
-            <button class="desmarcar-button">Desmarcar Consulta</button>
+            <button class="desmarcar-button" @click="desmarcarConsulta">Desmarcar Consulta</button>
         </router-link>
     </div>
 </template>
@@ -16,6 +16,9 @@ export default {
         }
     },
     methods: {
+        desmarcarConsulta() {
+            this.$emit('desmarcar-consulta', this.consulta.id_consulta);
+        },
         formatDate(dateString) {
             const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
             return new Date(dateString).toLocaleDateString(undefined, options);

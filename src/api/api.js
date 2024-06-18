@@ -63,6 +63,21 @@ export async function patch(endpoint, data, token = null) {
   }
 }
 
+export async function del(endpoint, token = null) {
+  try {
+    const headers = {};
+    if (token) {
+      headers["Authorization"] = `Bearer ${token}`;
+    }
+    console.log('DELETE request to', endpoint);
+    const response = await api.delete(endpoint, { headers: headers });
+    return handleResponse(response);
+  } catch (error) {
+    console.error(`Error deleting from ${endpoint}:`, error);
+    throw error;
+  }
+}
+
 async function handleResponse(response) {
   if (response.status >= 200 && response.status < 300) {
     return response.data;

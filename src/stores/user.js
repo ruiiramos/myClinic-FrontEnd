@@ -49,6 +49,7 @@ export const useUserStore = defineStore('users', {
         try {
           console.log('Creating user with data:', user);
           const response = await post('/utilizadores/pacientes', user);
+          sessionStorage.setItem('user_id', response.id_user)
           this.users.push(response.data);
           return response.data;
         } catch (error) {
@@ -59,6 +60,15 @@ export const useUserStore = defineStore('users', {
       async validateEmail(id_user,codigo) {
         try {
           const response = await post(`/utilizadores/verify-email`, {id_user: id_user, codigo: codigo});
+          return response.data;
+        } catch (error) {
+          console.error('Error in store validating code:', error);
+          throw error; 
+        }
+      },
+      async resendEmail(id_user,email) {
+        try {
+          const response = await post(`/utilizadores/resend-email`, {id_user: id_user, email: email});
           return response.data;
         } catch (error) {
           console.error('Error in store validating code:', error);
