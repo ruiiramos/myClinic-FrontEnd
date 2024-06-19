@@ -10,6 +10,7 @@ export const useUserStore = defineStore('users', {
       user: null,
       loggedUser: null,
       isLoggedIn: false,
+      token: null,
     }),
     getters: {
       getUsers: (state) => state.users,
@@ -89,9 +90,10 @@ export const useUserStore = defineStore('users', {
       async loginPacientes(email, password) {
         try {
           const response = await post('/utilizadores/login/pacientes', { email: email, password: password });
-          console.log(response);
+          console.log('Response from backend: ', response);
           sessionStorage.setItem('jwt', response.token);
-          return response.data;
+          this.token = response.token
+          return response;
         } catch (error) {
           console.error('Error in store logging in:', error);
           throw error; 

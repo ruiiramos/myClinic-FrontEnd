@@ -14,7 +14,7 @@
       </div>
       <button type="submit" class="btn-entrar">Entrar</button>
       <a href="/register" class="register-link">Quero-me Registar</a>
-      <a href="/forgotpassword" class="forgotPassword-link">Esqueci-me da palavra passe!</a>
+      <a href="/forgotpassword" class="forgotPassword-link">Esqueci-me da palavra passe</a>
     </form>
     <div v-if="alertMessage" :class="['alert', alertType]">{{ alertMessage }}</div>
   </div>
@@ -23,6 +23,7 @@
 <script>
 import router from '@/router';
 import { useUserStore } from '@/stores/user';
+import { jwtDecode } from 'jwt-decode';
 export default {
   data() {
     return {
@@ -41,10 +42,23 @@ export default {
       const plainFormData = JSON.parse(JSON.stringify(this.formData));
       try {
         //console.log('Plain form data:', plainFormData);
-        await userStore.loginPacientes(plainFormData.email ,plainFormData.password);
-        this.alertMessage = 'User logged in successfully!';
-        this.alertType = 'alert-success';
-        this.$router.push('/home');
+        const response = await userStore.loginPacientes(plainFormData.email ,plainFormData.password);
+        console.log('Login response: ', response);
+        const token = response.token;
+        const decodedToken = jwtDecode(token);
+        console.log('Decoded token:', decodedToken);
+
+        if (decodedToken.tipo === 'admin') {
+          this.alertMessage = 'User logged in successfully!';
+          this.alertType = 'alert-success';
+          this.$router.push('/homeadmin');
+        } else if (decodedToken.tipo === 'paciente') {
+          this.alertMessage = 'User logged in successfully!';
+          this.alertType = 'alert-success';
+          this.$router.push('/home');
+        } else {
+          console.warn('Unexpected user type:', decodedToken.tipo);
+        }
       } catch (error) {
         console.error('Error logging in user:', error);
         this.alertMessage = 'Failed to log in user. Please try again.';
