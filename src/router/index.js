@@ -10,6 +10,7 @@ import HomePageView from '../views/HomePageView.vue'
 import AgendaView from '../views/AgendaView.vue'
 import ConfirmarEmailView from '../views/ConfirmarEmailView.vue'
 import ForgotPasswordView from '../views/ForgotPasswordView.vue'
+import ResetPasswordView from '../views/ResetPasswordView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -86,6 +87,11 @@ const router = createRouter({
       path: '/forgotpassword',
       name: 'forgotpassword',
       component: ForgotPasswordView
+    },
+    {
+      path: '/resetpassword',
+      name: 'resetpassword',
+      component: ResetPasswordView
     },
 
   ]
