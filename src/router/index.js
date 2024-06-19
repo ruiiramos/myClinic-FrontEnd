@@ -8,7 +8,6 @@ import MedicosView from '../views/MedicosView.vue'
 import UserView from '../views/UserView.vue'
 import HomePageView from '../views/HomePageView.vue'
 import AgendaView from '../views/AgendaView.vue'
-import DesmarcacaoView from '../views/DesmarcacaoView.vue'
 import ConfirmarEmailView from '../views/ConfirmarEmailView.vue'
 import ForgotPasswordView from '../views/ForgotPasswordView.vue'
 
@@ -79,17 +78,9 @@ const router = createRouter({
       }
     },
     {
-      path: '/desmarcacao',
-      name: 'desmarcacao',
-      component: DesmarcacaoView,
-      meta:{
-        requiresAuth: true
-      }
-    },
-    {
       path: '/confirmaremail',
       name: 'confirmaremail',
-      component: ConfirmarEmailView
+      component: ConfirmarEmailView,
     },
     {
       path: '/forgotpassword',
