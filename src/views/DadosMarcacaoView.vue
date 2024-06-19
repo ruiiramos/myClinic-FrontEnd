@@ -62,6 +62,7 @@ export default {
       userStore: useUserStore(),
       formData: {
         data: '',
+        especialidade: '',
         horario: '',
         preco_consulta: '70.00',
         medico: '',
@@ -84,7 +85,7 @@ export default {
         {text: 'Pediatria', value: 'Pediatria'},
         {text: 'Endocrinologia', value: 'Endocrinologia'},
         {text: 'Estomatologia', value: 'Estomatologia'},
-        {text: 'Gastrenterologia', value: 'Gastrentologia'},
+        {text: 'Gastrenterologia', value: 'Gastrenterologia'},
         {text: 'Ginecologia', value: 'Ginecologia'},
         {text: 'Hematologia', value: 'Hematologia'},
         {text: 'Medicina Geral', value: 'Medicina Geral'},
@@ -115,17 +116,35 @@ export default {
       }
     }
   },
+  async created() {
+    const queryEspecialidade = this.$route.query.especialidade;
+    const queryMedico = this.$route.query.medico;
+    
+    if (queryEspecialidade) {
+      this.formData.especialidade = queryEspecialidade;
+      await this.fetchMedicosByEspecialidade();
+    }
+    
+    if (queryMedico) {
+      this.formData.medico = queryMedico;
+    }
+  },
   methods: {
     async fetchMedicosByEspecialidade() {
       const consultaStore = useConsultaStore();
       try {
         const especialidade = this.formData.especialidade;
-        const data = `?especialidade=${especialidade}`
+        const data = `?especialidade=${especialidade}`;
         const response = await consultaStore.fetchMedicosByEspecialidade(data);
 
         const medicosNomes = response.map(medico => ({text: medico.nome, value: medico.nome}));
 
         this.medicos = medicosNomes;
+
+        // Verifica se o médico está na lista e define como selecionado
+        if (this.$route.query.medico && this.medicos.find(m => m.value === this.$route.query.medico)) {
+          this.formData.medico = this.$route.query.medico;
+        }
       } catch (error) {
         console.error('Error fetching medicos:', error);
         this.showNotification('Failed to fetch medicos. Please try again.', 'error');
@@ -165,7 +184,6 @@ export default {
   }
 }
 </script>
-
 
 <style scoped>
 .container {
