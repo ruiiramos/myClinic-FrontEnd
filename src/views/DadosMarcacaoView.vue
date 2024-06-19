@@ -24,7 +24,7 @@
           </select>
   
           <!-- Dropdown Horarios -->
-          <label for="horarios">Hórario</label>
+          <label for="horarios">Horário</label>
           <select id="horarios" v-model="formData.horario" required>
             <option value="" disabled selected>Selecione um horário</option>
             <option v-for="horario in horarios" :value="horario.value">{{ horario.text }}</option>
