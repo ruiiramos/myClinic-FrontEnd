@@ -12,10 +12,10 @@
         <router-link to="#">
           <img :src="$route.name === 'agenda' ? '../src/img/icons-sidebar/calendar-rose.webp' : '../src/img/icons-sidebar/calendar.webp'" alt="Marcação" class="sidebar-icon">
         </router-link>
-        <router-link to="#">
+        <router-link to="/medicosadmin">
           <img :src="$route.name === 'medicos' ? '../src/img/icons-sidebar/doctor-rose.webp' : '../src/img/icons-sidebar/doctor.webp'" alt="Medicos" class="sidebar-icon">
         </router-link>
-        <router-link to="#">
+        <router-link to="/especialidadesadmin">
           <img :src="$route.name === 'especialidades' ? '../src/img/icons-sidebar/especialidades-rose.webp' : '../src/img/icons-sidebar/especialidades.webp'" alt="Especialidades" class="sidebar-icon">
         </router-link>
         <router-link to="#">

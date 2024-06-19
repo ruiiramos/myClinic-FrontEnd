@@ -12,6 +12,8 @@ import ConfirmarEmailView from '../views/ConfirmarEmailView.vue'
 import ForgotPasswordView from '../views/ForgotPasswordView.vue'
 import ResetPasswordView from '../views/ResetPasswordView.vue'
 import HomePageAdminView from '../views/HomePageAdminView.vue'
+import MedicosAdminView from '../views/MedicosAdminView.vue'
+import EspecialidadesAdminView from '../views/EspecialidadesAdminView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -98,6 +100,22 @@ const router = createRouter({
       path: '/homeadmin',
       name: 'homeadmin',
       component: HomePageAdminView,
+      meta:{
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/medicosadmin',
+      name: 'medicosadmin',
+      component: MedicosAdminView,
+      meta:{
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/especialidadesadmin',
+      name: 'especialidadesadmin',
+      component: EspecialidadesAdminView,
       meta:{
         requiresAuth: true
       }
