@@ -62,6 +62,7 @@ export default {
       userStore: useUserStore(),
       formData: {
         data: '',
+        especialidade: '',
         horario: '',
         preco_consulta: '70.00',
         medico: '',
@@ -84,7 +85,7 @@ export default {
         {text: 'Pediatria', value: 'Pediatria'},
         {text: 'Endocrinologia', value: 'Endocrinologia'},
         {text: 'Estomatologia', value: 'Estomatologia'},
-        {text: 'Gastrenterologia', value: 'Gastrentologia'},
+        {text: 'Gastrenterologia', value: 'Gastrenterologia'},
         {text: 'Ginecologia', value: 'Ginecologia'},
         {text: 'Hematologia', value: 'Hematologia'},
         {text: 'Medicina Geral', value: 'Medicina Geral'},
@@ -113,6 +114,13 @@ export default {
         message: '',
         type: '' // 'success' or 'error'
       }
+    }
+  },
+  async created() {
+    const queryEspecialidade = this.$route.query.especialidade;
+    if (queryEspecialidade) {
+      this.formData.especialidade = queryEspecialidade;
+      await this.fetchMedicosByEspecialidade();
     }
   },
   methods: {
