@@ -4,11 +4,18 @@
         <Sidebar/>
 
         <div class="content">
-            <div class="retangulo-bem-vindo">
-                <img src="../img/myclinic.webp" alt="logo">
-                <div class="text-container">
-                    <h2>Olá {{ userName }},</h2>
-                    <p>Seja bem-vindo à sua página pessoal da myClinic!</p>
+            <div class="column">
+                <div class="retangulo-bem-vindo">
+                    <img src="../img/myclinic.webp" alt="logo">
+                    <div class="text-container">
+                        <h2>Olá {{ userName }},</h2>
+                        <p>Seja bem-vindo à sua página pessoal da myClinic!</p>
+                    </div>
+                </div>
+                <div class="retangulo-2">
+                    <div class="text-container">
+
+                    </div>
                 </div>
             </div>
             <div class="retangulo-calendario">
@@ -48,7 +55,8 @@
 <style scoped>
 .container {
     display: flex;
-    flex-direction: row;
+    height: 100vh; 
+    overflow: hidden; 
 }
 
 .content {
@@ -58,13 +66,18 @@
     padding: 20px;
 }
 
+.column {
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px; 
+}
+
 .retangulo-bem-vindo {
     width: 700px; 
     height: 200px;
     padding: 50px; 
     background-color: white; 
     margin-top: 20px; 
-    margin-left: 40px;
     border-radius: 15px;
     display: flex; 
     align-items: center; 
@@ -90,13 +103,24 @@
     font-size: 17px;
 }
 
+.retangulo-2 {
+    width: 700px; 
+    height: 300px;
+    padding: 50px; 
+    background-color: white; 
+    margin-top: 20px; 
+    border-radius: 15px;
+    display: flex; 
+    align-items: center; 
+    border: 1px solid black;
+}
+
 .retangulo-calendario {
     width: 400px; 
     height: 300px;
     padding: 50px; 
     background-color: white; 
     margin-top: 20px; 
-    margin-left: 50px;
     border-radius: 15px;
     display: flex; 
     align-items: center; 

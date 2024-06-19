@@ -1,7 +1,9 @@
 <template>
     <div class="white-rectangle">
         <h2>{{ medico.nome }}</h2>
-        <button @click="marcarConsulta" class="mark-button">Marcar</button>
+        <router-link to="/dadosMarcacao">
+            <button class="mark-button">Marcar</button>
+        </router-link>
     </div>
 </template>
 
@@ -11,22 +13,10 @@ export default {
         medico: {
             type: Object,
             required: true
-        },
-        especialidade: {
-            type: String,
-            required: true
         }
     },
-    methods: {
-        marcarConsulta() {
-            this.$router.push({
-                path: '/dadosmarcacao',
-                query: { 
-                    especialidade: this.especialidade, 
-                    medico: this.medico.nome
-                }
-            });
-        }
+    created() {
+        console.log("Medico Prop:", this.medico);  // Debugging
     }
 }
 </script>

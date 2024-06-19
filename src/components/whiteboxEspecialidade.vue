@@ -1,7 +1,9 @@
 <template>
     <div class="white-rectangle">
         <h2>{{ especialidade.especialidade }}</h2>
-        <button @click="marcarConsulta" class="mark-button">Marcar</button>
+        <router-link to="/dadosMarcacao">
+            <button class="mark-button">Marcar</button>
+        </router-link>
     </div>
 </template>
 
@@ -11,14 +13,6 @@ export default {
         especialidade: {
             type: Object,
             required: true
-        }
-    },
-    methods: {
-        marcarConsulta() {
-            this.$router.push({
-                path: '/dadosMarcacao',
-                query: { especialidade: this.especialidade.especialidade }
-            });
         }
     }
 }
