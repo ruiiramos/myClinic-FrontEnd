@@ -64,6 +64,8 @@
     flex-direction: row;
     align-items: flex-start;
     padding: 20px;
+    position: absolute;
+    left: 19%;
 }
 
 .column {

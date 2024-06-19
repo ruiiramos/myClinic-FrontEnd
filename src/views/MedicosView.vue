@@ -62,6 +62,9 @@ export default {
 .container {
     display: flex;
     flex-direction: row;
+    position: absolute;
+    left: 16%;
+    
 }
 
 .content {
@@ -69,6 +72,7 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     padding: 20px;
+    width: 1vw;
 }
 
 select {

@@ -33,7 +33,7 @@ export default {
 
 <style scoped>
 .white-rectangle {
-  width: 1250px; 
+  width: 1220px; 
   height: 100px;
   padding: 50px; 
   background-color: white; 

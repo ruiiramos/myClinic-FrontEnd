@@ -184,11 +184,13 @@ export default {
 }
 
 .myclinic {
+  display: flex;
+  position: absolute;
   font-family: 'Arial', sans-serif;
   color: #000000;
   padding: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  left: 16%;
+  top: 5%;
 }
 
 /* Estilos dos dropdowns */

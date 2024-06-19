@@ -65,6 +65,8 @@ export default {
 .container {
   display: flex;
   flex-direction: row;
+  position: absolute;
+  left: 17%;
 }
 
 .content {
