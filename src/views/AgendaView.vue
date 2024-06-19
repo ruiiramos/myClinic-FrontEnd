@@ -7,6 +7,7 @@
         <Whitebox :consulta="consulta" @desmarcar-consulta="desmarcarConsulta"/>
       </div>
     </div>
+    <div id="popup" class="popup hidden">Consulta desmarcada com sucesso</div>
   </div>
 </template>
 
@@ -44,9 +45,17 @@ export default {
         const consultaStore = useConsultaStore();
         await consultaStore.deleteConsulta(id);
         this.filteredConsultas = consultaStore.consultas;
+        this.showPopup();
       } catch (error) {
         console.error('Error a desmarcar consulta:', error);
       }
+    },
+    showPopup() {
+      const popup = document.getElementById('popup');
+      popup.classList.remove('hidden');
+      setTimeout(() => {
+        popup.classList.add('hidden');
+      }, 3000);
     }
   }
 };
@@ -96,5 +105,22 @@ export default {
   padding: 10px 20px; 
   font-size: 16px; 
   cursor: pointer; 
+}
+
+.popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: green;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 1000;
+  transition: opacity 0.5s;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 </style>
