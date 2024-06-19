@@ -1,9 +1,7 @@
 <template>
     <div class="white-rectangle">
         <h2>Consulta com o Dr. {{ consulta.medico.nome }} - {{ formatDate(consulta.data) }}, {{ formatTime(consulta.hora) }}h</h2>
-        <router-link to="desmarcacao">
             <button class="desmarcar-button" @click="desmarcarConsulta">Desmarcar Consulta</button>
-        </router-link>
     </div>
 </template>
 
