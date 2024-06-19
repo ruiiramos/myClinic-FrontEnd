@@ -18,8 +18,13 @@
                     </div>
                 </div>
             </div>
-            <div class="retangulo-calendario">
+            <div class="column">
+                <div class="retangulo-calendario">
 
+                </div>
+                <div class="retangulo-novo">
+
+                </div>
             </div>
         </div>
         
@@ -107,7 +112,7 @@
 
 .retangulo-2 {
     width: 700px; 
-    height: 300px;
+    height: 400px;
     padding: 50px; 
     background-color: white; 
     margin-top: 20px; 
@@ -118,6 +123,18 @@
 }
 
 .retangulo-calendario {
+    width: 400px; 
+    height: 300px;
+    padding: 50px; 
+    background-color: white; 
+    margin-top: 20px; 
+    border-radius: 15px;
+    display: flex; 
+    align-items: center; 
+    border: 1px solid black;
+}
+
+.retangulo-novo {
     width: 400px; 
     height: 300px;
     padding: 50px; 
