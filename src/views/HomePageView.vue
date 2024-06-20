@@ -84,7 +84,7 @@
                     await this.userStore.fetchMedicos();
                     this.medicos = this.userStore.medicos;
                 } catch (error) {
-                    console.error('Error fetching doctors:', error);
+                    console.error('Error fetching médicos:', error);
                 }
             },
             async fetchConsultas() {
@@ -93,7 +93,7 @@
                     await this.consultaStore.fetchConsultasByPaciente(loggedUser.id_user);
                     this.consultas = this.consultaStore.consultas;
                 } catch (error) {
-                    console.error('Error fetching consultations:', error);
+                    console.error('Error fetching consultas:', error);
                 }
             },
             async fetchEspecialidades() {
@@ -101,7 +101,7 @@
                     await this.consultaStore.fetchEspecialidades();
                     this.especialidades = this.consultaStore.especialidades;
                 } catch (error) {
-                    console.error('Error fetching specialties:', error);
+                    console.error('Error fetching especialidades:', error);
                 }
             },
             formatDate(dateString) {
