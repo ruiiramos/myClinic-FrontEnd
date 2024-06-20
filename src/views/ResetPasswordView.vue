@@ -1,9 +1,9 @@
 <template>
     <div class="container">
         <div class="login-container">
-            <form action="index.html">
-                <h2>Mude sua palavra passe</h2>
-                <p>Introduza sua nova palavra passe</p>
+            <form @submit.prevent="resetPassword">
+                <h2>Mude a sua password</h2>
+                <p>Introduza a sua nova password</p>
                 <div class="input-div one">
                     <div class="i">
                         <i class="fas fa-envelope"></i>
@@ -20,10 +20,10 @@
                         <input class="input" type="password" placeholder="Confirmar Password" v-model="confirmPassword">
                     </div>
                 </div>
-                <input type="submit" class="btn" value="Mudar" @click.prevent="forgotPassword">
+                <input type="submit" class="btn" value="Confirmar">
             </form>
             <div v-if="showPopup" class="popup red">
-                As palavras passe não coincidem
+                As passwords não coincidem
             </div>
             <div v-if="showSuccessPopup" class="popup green">
                 Password alterada com sucesso
@@ -33,24 +33,38 @@
 </template>
 
 <script>
+import { useUserStore } from '@/stores/user';
 export default {
     data() {
         return {
             password: '',
             confirmPassword: '',
             showPopup: false,
-            showSuccessPopup: false
+            showSuccessPopup: false,
+            userStore: useUserStore(),
         }
     },
     methods: {
-        forgotPassword() {
-            if (this.password === this.confirmPassword) {
+        async resetPassword() {
+            console.log('Reset Password Function Called');
+            if (this.password !== this.confirmPassword) {
+                this.showPopup = true;
+                setTimeout(() => {
+                    this.showPopup = false;
+                }, 3000);
+                return;
+            }
+
+            const token = this.$route.params.token;
+            try {
+                await this.userStore.resetPassword(token, this.password, this.confirmPassword);
                 this.showSuccessPopup = true;
                 setTimeout(() => {
                     this.showSuccessPopup = false;
-                    window.location.href = '/login';
+                    this.$router.push('/login');
                 }, 2000);
-            } else {
+            } catch (error) {
+                console.log(error);
                 this.showPopup = true;
                 setTimeout(() => {
                     this.showPopup = false;

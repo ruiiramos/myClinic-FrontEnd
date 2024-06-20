@@ -34,6 +34,7 @@ export default {
         async forgotPassword() {
             try {
                 const response = await this.userStore.forgotPassword(this.email);
+                this.$router.push('/resetpassword');
             } catch (error) {
                 console.error('Error in store resending email:', error);
             }

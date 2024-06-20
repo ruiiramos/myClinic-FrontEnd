@@ -92,7 +92,7 @@ const router = createRouter({
       component: ForgotPasswordView
     },
     {
-      path: '/resetpassword',
+      path: `/resetpassword/:token`,
       name: 'resetpassword',
       component: ResetPasswordView
     },

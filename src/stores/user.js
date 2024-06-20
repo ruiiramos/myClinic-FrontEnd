@@ -137,6 +137,15 @@ export const useUserStore = defineStore('users', {
             throw error;
         }
       },
+      async resetPassword(token, password, confirmPassword) {
+        try {
+          const response = await api.patch(`/utilizadores/reset-password/${token}`, { password, confirmPassword });
+          return response.data;
+        } catch (error) {
+          console.error('Error in store resetting password:', error);
+          throw error;
+        }
+      },
       logout() {
         sessionStorage.removeItem('jwt');
         this.loggedUser = null;
