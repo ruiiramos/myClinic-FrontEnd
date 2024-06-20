@@ -47,7 +47,7 @@ export default {
   methods: {
     async handleDeleteMedico(id) {
       const userStore = useUserStore();
-      console.log("Handling delete medico with ID:", id);
+      //console.log("Handling delete medico with ID:", id);
       try {
         await userStore.deleteMedico(id);
         this.medicos = this.medicos.filter(medico => medico.id_user !== id);

@@ -1,7 +1,7 @@
 <template>
     <div class="white-rectangle">
         <h2>{{ medico.nome }}</h2>
-            <button class="mark-button" @click="deleteMedico">Eliminar</button>
+        <button class="mark-button" @click="deleteMedico">Eliminar</button>
     </div>
 </template>
 
