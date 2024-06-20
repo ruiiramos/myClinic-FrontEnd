@@ -61,7 +61,7 @@ export default {
         }
       } catch (error) {
         console.error('Error logging in user:', error);
-        this.alertMessage = 'Failed to log in user. Please try again.';
+        this.alertMessage = error.response.data.message;
         this.alertType = 'alert-failure';
       }
       setTimeout(() => {

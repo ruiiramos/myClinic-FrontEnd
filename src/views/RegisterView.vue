@@ -106,7 +106,7 @@ export default {
         this.$router.push('/confirmarEmail');
       } catch (error) {
         console.error('Error registering user:', error);
-        this.alertMessage = 'Failed to register user. Please try again.';
+        this.alertMessage = error.response.data.message;
         this.alertType = 'alert-failure';
       }
       setTimeout(() => {

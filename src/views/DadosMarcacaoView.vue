@@ -1,49 +1,49 @@
 <template>
   <div class="container">
-      <!-- Barra lateral -->
-      <Sidebar/>
-      <div class="myclinic">
-        <form class="appointment-form" @submit.prevent="handleSubmit">
-          <div class="input-group">
-            <label for="data_nascimento">Selecione uma data</label>
-            <input type="date" id="data_nascimento" v-model="formData.data" required>
-          </div>
-  
-          <!-- Dropdown para Especialidade -->
-          <label for="especialidade">Especialidade</label>
-          <select id="especialidade" v-model="formData.especialidade" @change="fetchMedicosByEspecialidade" required>
-            <option value="" disabled selected>Selecione uma especialidade</option>
-            <option v-for="especialidade in especialidades" :value="especialidade.value">{{ especialidade.text }}</option>
-          </select>
-  
-          <!-- Dropdown para Médico -->
-          <label for="medico">Médico</label>
-          <select id="medico" v-model="formData.medico" required>
-            <option value="" disabled selected>Selecione um médico</option>
-            <option v-for="medico in medicos" :value="medico.value">{{ medico.text }}</option>
-          </select>
-  
-          <!-- Dropdown Horarios -->
-          <label for="horarios">Hórario</label>
-          <select id="horarios" v-model="formData.horario" required>
-            <option value="" disabled selected>Selecione um horário</option>
-            <option v-for="horario in horarios" :value="horario.value">{{ horario.text }}</option>
-          </select>
-  
-          <!-- Dropdown para Sistema de Saude -->
-          <label for="sistema_saude">Sistema de Saúde</label>
-          <select id="sistema_saude" v-model="formData.sistema_saude" required>
-            <option value="" disabled selected>Selecione o seu Sistema de Saude</option>
-            <option v-for="sistema in sistemas_saude" :value="sistema.value">{{ sistema.text }}</option>
-          </select>
-  
-          <!-- Botão Continuar -->
-          <button type="submit" class="btn-continuar">Marcar Consulta</button>
-        </form>
-        <div v-if="notification.message" :class="['notification', notification.type]">
-          {{ notification.message }}
+    <!-- Barra lateral -->
+    <Sidebar/>
+    <div class="myclinic">
+      <form class="appointment-form" @submit.prevent="handleSubmit">
+        <div class="input-group">
+          <label for="data_nascimento">Selecione uma data</label>
+          <input type="date" id="data_nascimento" v-model="formData.data" required>
         </div>
+
+        <!-- Dropdown para Especialidade -->
+        <label for="especialidade">Especialidade</label>
+        <select id="especialidade" v-model="formData.especialidade" @change="fetchMedicosByEspecialidade" required>
+          <option value="" disabled selected>Selecione uma especialidade</option>
+          <option v-for="especialidade in especialidades" :value="especialidade.value">{{ especialidade.text }}</option>
+        </select>
+
+        <!-- Dropdown para Médico -->
+        <label for="medico">Médico</label>
+        <select id="medico" v-model="formData.medico" required>
+          <option value="" disabled selected>Selecione um médico</option>
+          <option v-for="medico in medicos" :value="medico.value">{{ medico.text }}</option>
+        </select>
+
+        <!-- Dropdown Horarios -->
+        <label for="horarios">Hórario</label>
+        <select id="horarios" v-model="formData.horario" required>
+          <option value="" disabled selected>Selecione um horário</option>
+          <option v-for="horario in horarios" :value="horario.value">{{ horario.text }}</option>
+        </select>
+
+        <!-- Dropdown para Sistema de Saude -->
+        <label for="sistema_saude">Sistema de Saúde</label>
+        <select id="sistema_saude" v-model="formData.sistema_saude" required>
+          <option value="" disabled selected>Selecione o seu Sistema de Saude</option>
+          <option v-for="sistema in sistemas_saude" :value="sistema.value">{{ sistema.text }}</option>
+        </select>
+
+        <!-- Botão Continuar -->
+        <button type="submit" class="btn-continuar">Marcar Consulta</button>
+      </form>
+      <div v-if="notification.message" :class="['notification', notification.type]">
+        {{ notification.message }}
       </div>
+    </div>
   </div>
 </template>
 
@@ -156,7 +156,8 @@ export default {
         this.showNotification('Consulta criada com sucesso!', 'success');
       } catch (error) {
         console.error('Error creating consulta:', error);
-        this.showNotification('Falha ao criar consulta. Por favor, tente novamente.', 'error');
+        const errorMessage = error.response?.data?.message || 'Falha ao criar consulta. Por favor, tente novamente.';
+        this.showNotification(errorMessage, 'error');
       }
     },
     showNotification(message, type) {
