@@ -106,7 +106,11 @@ export default {
         this.$router.push('/confirmarEmail');
       } catch (error) {
         console.error('Error registering user:', error);
-        this.alertMessage = error.response.data.message;
+        if (error.response && error.response.data && error.response.data.message) {
+          this.alertMessage = error.response.data.message;
+        } else {
+          this.alertMessage = 'Erro ao criar paciente';
+        }
         this.alertType = 'alert-failure';
       }
       setTimeout(() => {

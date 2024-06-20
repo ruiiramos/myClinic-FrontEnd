@@ -14,19 +14,26 @@
                 </div>
                 <div class="input-group">
                     <label for="cedula-medico">Cédula</label>
-                    <input type="text" id="cedula-medico" v-model="formData.nome" placeholder="Insira a cedula médica" required>
+                    <input type="text" id="cedula-medico" v-model="formData.cedula" placeholder="Insira a cedula médica" required>
+                </div>
+                <div class="input-group">
+                    <label for="genero">Género</label>
+                    <select id="genero" v-model="formData.genero" required>
+                        <option value="" disabled selected>Selecione um género</option>
+                        <option v-for="genero in generos" :value="genero.value">{{ genero.text }}</option>
+                    </select>
                 </div>
                 <!-- Dropdown para Especialidade -->
                 <div class="input-group">
                     <label for="especialidade">Especialidade</label>
-                    <select id="especialidade" v-model="formData.especialidade" @change="fetchMedicosByEspecialidade" required>
+                    <select id="especialidade" v-model="formData.especialidade" required>
                         <option value="" disabled selected>Selecione uma especialidade</option>
                         <option v-for="especialidade in especialidades" :value="especialidade.value">{{ especialidade.text }}</option>
                     </select>
                 </div>
                 <div class="input-group">
-                    <label for="psw-medico">Palavra-Passe</label>
-                    <input type="password" id="psw-medico" v-model="formData.nome" placeholder="Insira a Palavra passe" required>
+                    <label for="psw-medico">Password</label>
+                    <input type="password" id="psw-medico" v-model="formData.password" placeholder="Insira uma password" required>
                 </div>
                 <!-- Botão Registar -->
                 <button type="submit" class="btn-registar-medico">Registar Médico</button>
@@ -49,15 +56,14 @@ export default {
     },
     data() {
         return {
-            consultaStore: useConsultaStore(),
             userStore: useUserStore(),
             formData: {
-                data: '',
+                nome: '',
+                email: '',
+                cedula: '',
+                genero: '',
                 especialidade: '',
-                horario: '',
-                preco_consulta: '70.00',
-                medico: '',
-                paciente: '',
+                password: '',
             },
             especialidades: [
                 { text: 'Cardiologia', value: 'Cardiologia' },
@@ -79,6 +85,10 @@ export default {
                 { text: 'Reumatologia', value: 'Reumatologia' },
                 { text: 'Urologia', value: 'Urologia' }
             ],
+            generos: [
+                {text: 'Masculino', value: 'Masculino'},
+                {text: 'Feminino', value: 'Feminino'}
+            ],
             medicos: [],
             notification: {
                 message: '',
@@ -86,47 +96,26 @@ export default {
             }
         }
     },
-    async created() {
-        const queryEspecialidade = this.$route.query.especialidade;
-        if (queryEspecialidade) {
-            this.formData.especialidade = queryEspecialidade;
-            await this.fetchMedicosByEspecialidade();
-        }
-    },
     methods: {
-        async fetchMedicosByEspecialidade() {
-            const consultaStore = useConsultaStore();
-            try {
-                const especialidade = this.formData.especialidade;
-                const data = `?especialidade=${especialidade}`
-                const response = await consultaStore.fetchMedicosByEspecialidade(data);
-
-                const medicosNomes = response.map(medico => ({ text: medico.nome, value: medico.nome }));
-
-                this.medicos = medicosNomes;
-            } catch (error) {
-                console.error('Error fetching medicos:', error);
-                this.showNotification('Failed to fetch medicos. Please try again.', 'error');
-            }
-        },
         async handleSubmit() {
-            const consultaStore = useConsultaStore();
-            const loggedUser = await this.userStore.fetchLoggedUser();
+            const userStore = useUserStore();
 
             try {
-                const consultaData = {
-                    data: this.formData.data,
-                    hora: this.formData.horario,
-                    preco_consulta: this.formData.preco_consulta,
-                    nome_medico: this.formData.medico,
-                    nome_paciente: loggedUser.nome
+                const especialidadeData = {
+                    nome: this.formData.nome,
+                    email: this.formData.email,
+                    cedula: this.formData.cedula,
+                    genero: this.formData.genero,
+                    especialidade: this.formData.especialidade,
+                    password: this.formData.password,
+                    tipo: 'Médico'
                 };
 
-                await consultaStore.createConsultas(consultaData);
-                this.showNotification('Consulta criada com sucesso!', 'success');
+                await userStore.createMedicos(especialidadeData);
+                this.showNotification('Médico criado com sucesso!', 'success');
             } catch (error) {
-                console.error('Error creating consulta:', error);
-                const errorMessage = error.response?.data?.message || 'Falha ao criar consulta. Por favor, tente novamente.';
+                console.error('Error creating médico:', error);
+                const errorMessage = error.response.data.message || 'Falha ao criar médico. Por favor, tente novamente.';
                 this.showNotification(errorMessage, 'error');
             }
         },
@@ -137,7 +126,7 @@ export default {
                 this.notification.message = '';
                 this.notification.type = '';
                 if (type === 'success') {
-                    this.$router.push('/home');
+                    this.$router.push('/homeadmin');
                 }
             }, 2000);
         }
