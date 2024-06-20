@@ -12,7 +12,7 @@
                         <p>Seja bem-vindo à sua página pessoal da myClinic!</p>
                     </div>
                 </div>
-                <div class="retangulo-medicos">
+                <div class="retangulo-medicos" @click="medicosPush">
                     <h3>Lista de Médicos</h3>
                     <div class="medicos-list">
                         <div v-for="medico in medicos" :key="medico.id_user" class="medico-item">
@@ -22,20 +22,20 @@
                 </div>
             </div>
             <div class="column">
-                <div class="retangulo-calendario">
-                    <h3>Suas Consultas</h3>
+                <div class="retangulo-calendario" @click="agendaPush">
+                    <h3>As suas Consultas</h3>
                     <div class="consultas-list">
                         <div v-for="consulta in consultas" :key="consulta.id_consulta" class="consulta-item">
-                            {{ formatDate(consulta.data) }} - {{ consulta.hora }} - Médico: {{ consulta.nome_medico }}
+                            {{ formatDate(consulta.data) }} - {{ formatTime(consulta.hora) }} - Dr. {{ consulta.medico.nome }}
                         </div>
                     </div>
                 </div>
 
-                <div class="retangulo-especialidades">
+                <div class="retangulo-especialidades" @click="especialidadesPush">
                     <h3>Especialidades</h3>
                     <div class="especialidades-list">
                         <div v-for="especialidade in especialidades" :key="especialidade.id_especialidade" class="especialidade-item">
-                            {{ especialidade.nome }}
+                            {{ especialidade.especialidade }}
                         </div>
                     </div>
                 </div>
@@ -104,11 +104,22 @@
                     console.error('Error fetching specialties:', error);
                 }
             },
-            formatDate(dateTimeString) {
-                const date = new Date(dateTimeString);
-                const formattedDate = date.toLocaleDateString('pt-BR');
-                const formattedTime = date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-                return `${formattedDate} - ${formattedTime}`;
+            formatDate(dateString) {
+                const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+                return new Date(dateString).toLocaleDateString(undefined, options);
+            },
+            formatTime(timeString) {
+                const [hours, minutes] = timeString.split(':');
+                return `${hours}:${minutes}`;
+            },
+            medicosPush() {
+                this.$router.push('/medicos');
+            },
+            agendaPush() {
+                this.$router.push('/agenda');
+            },
+            especialidadesPush() {
+                this.$router.push('/especialidades');
             },
         },
     }
@@ -176,6 +187,11 @@
     border-radius: 15px;
     border: 1px solid black;
     overflow-y: auto;
+    cursor: pointer;
+}
+
+.retangulo-medicos h3 {
+    margin-bottom: 5px;
 }
 
 .medicos-list {
@@ -201,6 +217,11 @@
     border-radius: 15px;
     border: 1px solid black;
     overflow-y: auto;
+    cursor: pointer;
+}
+
+.retangulo-calendario h3 {
+    margin-bottom: 5px;
 }
 
 .consultas-list {
@@ -225,6 +246,11 @@
     border-radius: 15px;
     border: 1px solid black;
     overflow-y: auto;
+    cursor: pointer;
+}
+
+.retangulo-especialidades h3 {
+    margin-bottom: 5px;
 }
 
 .especialidades-list {
