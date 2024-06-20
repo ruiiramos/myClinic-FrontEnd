@@ -6,20 +6,20 @@
         <router-link to="/homeadmin">
           <img :src="$route.name === 'homeadmin' ? '../src/img/icons-sidebar/home-rose.webp' : '../src/img/icons-sidebar/home.webp'" alt="Home" class="sidebar-icon">
         </router-link>
-        <router-link to="#">
-          <img :src="$route.name === 'dadosmarcacao' ? '../src/img/icons-sidebar/plus-rose.webp' : '../src/img/icons-sidebar/plus.webp'" alt="Marcação" class="sidebar-icon">
+        <router-link to="/registarespecialidade">
+          <img :src="$route.name === 'registarespecialidade' ? '../src/img/icons-sidebar/criarespecialidade-rose.webp' : '../src/img/icons-sidebar/criarespecialidade.webp'" alt="Criar Especialidade" class="sidebar-icon">
         </router-link>
-        <router-link to="patientadmin">
-          <img :src="$route.name === 'patientadmin' ? '../src/img/icons-sidebar/patient-rose.webp' : '../src/img/icons-sidebar/patient.webp'" alt="Marcação" class="sidebar-icon">
+        <router-link to="/createdoctor">
+          <img :src="$route.name === 'createdoctor' ? '../src/img/icons-sidebar/createdoctor-rose.webp' : '../src/img/icons-sidebar/createdoctor.webp'" alt="Registar Médico" class="sidebar-icon">
+        </router-link>
+        <router-link to="/patientadmin">
+          <img :src="$route.name === 'patientadmin' ? '../src/img/icons-sidebar/patient-rose.webp' : '../src/img/icons-sidebar/patient.webp'" alt="Pacientes" class="sidebar-icon">
         </router-link>
         <router-link to="/medicosadmin">
           <img :src="$route.name === 'medicosadmin' ? '../src/img/icons-sidebar/doctor-rose.webp' : '../src/img/icons-sidebar/doctor.webp'" alt="Medicos" class="sidebar-icon">
         </router-link>
         <router-link to="/especialidadesadmin">
           <img :src="$route.name === 'especialidadesadmin' ? '../src/img/icons-sidebar/especialidades-rose.webp' : '../src/img/icons-sidebar/especialidades.webp'" alt="Especialidades" class="sidebar-icon">
-        </router-link>
-        <router-link to="#">
-          <img :src="$route.name === 'user' ? '../src/img/icons-sidebar/user-rose.webp' : '../src/img/icons-sidebar/user.webp'" alt="Perfil" class="sidebar-icon">
         </router-link>
         <router-link to="/" @click="logout">
           <img src="../img/icons-sidebar/logout.webp" alt="Terminar Sessão" class="sidebar-icon">
