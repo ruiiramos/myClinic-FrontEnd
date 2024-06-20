@@ -12,7 +12,7 @@
             </select>
           
             <div v-for="especialidade in filteredEspecialidadesBox" :key="especialidade.id_especialidade">
-                <Whitebox :especialidade="especialidade" />
+                <Whitebox :especialidade="especialidade" @delete-especialidade="handleDeleteEspecialidade"/>
             </div>
         </div>
     </div>
@@ -62,6 +62,20 @@ export default {
             this.especialidadesBox = consultaStore.especialidades;
         } catch (error) {
             console.error('Error fetching especialidades:', error);
+        }
+    },
+    methods: {
+        async handleDeletePaciente(id) {
+            const consultaStore = useConsultaStore();
+            //console.log("Handling delete especialidade with ID:", id);
+            try {
+                await consultaStore.deleteEspecialidade(id);
+                this.especialidades = this.especialidades.filter(especialidade => especialidade.id_especialidade !== id);
+                this.especialidadesBox = this.especialidadesBox.filter(especialidade => especialidade.id_especialidade !== id);
+                //console.log("Fetched especialidades:", this.especialidades);
+            } catch (error) {
+                console.error('Error deleting especialidade:', error);
+            }
         }
     },
     computed: {

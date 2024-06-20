@@ -1,7 +1,7 @@
 <template>
     <div class="white-rectangle">
         <h2>{{ especialidade.especialidade }}</h2>
-        <button @click="deleteEspecialidade" class="mark-button">Eliminar</button>
+        <button @click="deleteEspecialidade" class="delete-button">Eliminar</button>
     </div>
 </template>
 
@@ -45,7 +45,7 @@ export default {
     font-size: 16px;
 }
 
-.mark-button {
+.delete-button {
     background: red; 
     color: white; 
     border: none;
