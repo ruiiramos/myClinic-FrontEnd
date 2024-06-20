@@ -1,7 +1,7 @@
 <template>
     <div class="white-rectangle">
         <h2>{{ medico.nome }}</h2>
-            <button class="mark-button">Eliminar</button>
+            <button class="mark-button" @click="deleteMedico">Eliminar</button>
     </div>
 </template>
 
@@ -13,8 +13,11 @@ export default {
             required: true
         }
     },
-    created() {
-        console.log("Medico Prop:", this.medico);  // Debugging
+    methods: {
+        deleteMedico() {
+            //console.log("Deleting medico with ID:", this.medico.id_user);
+            this.$emit('delete-medico', this.medico.id_user);
+        }
     }
 }
 </script>

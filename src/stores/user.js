@@ -146,6 +146,16 @@ export const useUserStore = defineStore('users', {
           throw error;
         }
       },
+      async deleteMedico(id) {
+        try {
+          const response = await api.del(`/utilizadores/medicos/${id}`);
+          this.medicos = this.medicos.filter(medico => medico.id_user !== id);
+          return response;
+        } catch (error) {
+          console.error('Error in store deleting médico:', error);
+          throw error;
+        }
+      },
       logout() {
         sessionStorage.removeItem('jwt');
         this.loggedUser = null;

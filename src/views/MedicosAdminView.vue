@@ -10,7 +10,7 @@
                 </option>
             </select>
             <div v-for="medico in filteredMedicosBox" :key="medico.email">
-                <Whitebox :medico="medico" />
+                <Whitebox :medico="medico" @delete-medico="handleDeleteMedico" />
             </div>
         </div>
     </div>
@@ -39,9 +39,23 @@ export default {
       await userStore.fetchMedicos();
       this.medicos = userStore.medicos;
       this.medicosBox = userStore.medicos;
-      console.log("Fetched Medicos:", this.medicos);  // Debugging
+      //console.log("Fetched Medicos:", this.medicos);
     } catch (error) {
       console.error('Error fetching medicos:', error);
+    }
+  },
+  methods: {
+    async handleDeleteMedico(id) {
+      const userStore = useUserStore();
+      console.log("Handling delete medico with ID:", id);
+      try {
+        await userStore.deleteMedico(id);
+        this.medicos = this.medicos.filter(medico => medico.id_user !== id);
+        this.medicosBox = this.medicosBox.filter(medico => medico.id_user !== id);
+        //console.log("Fetched Medicos:", this.medicos);
+      } catch (error) {
+        console.error('Error deleting medico:', error);
+      }
     }
   },
   computed: {
