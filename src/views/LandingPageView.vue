@@ -53,7 +53,7 @@
                         <i class='bx bxs-book-content'></i>
                         <div>
                            <h4>Análises</h4> 
-                           <small>Conduzimos uma gama de análises clínicas para monitorar e diagnosticar várias condições de saúde, garantindo um cuidado de saúde completo.</small>
+                           <small>Conduzimos uma gama de análises clínicas para monitorizar e diagnosticar várias condições de saúde, garantindo um cuidado de saúde completo.</small>
                         </div>
                     </article>
                 </div>
@@ -62,7 +62,7 @@
         <!------------------END OF THE SERVICES------------------->
         <section id="doctor">
             <h2>Nossos Médicos</h2>
-            <p>É com grande prazer que apresentamos a nossa dedicada equipe de médicos. Cada um deles é altamente qualificado e comprometido em fornecer o melhor cuidado possível aos nossos pacientes.</p>
+            <p>É com grande prazer que apresentamos a nossa dedicada equipa de médicos. Cada um deles é altamente qualificado e comprometido em fornecer o melhor cuidado possível aos nossos pacientes.</p>
             <div class="container">
                 <article>
                     <div class="doctor__image">
@@ -123,7 +123,7 @@
         <section id="appointment">
             <div class="container">
                 <div class="info">
-                    <h2>Fala Conosco, queremos ouvi-lo!</h2>
+                    <h2>Fale Conosco, queremos ouvi-lo!</h2>
                     <p>A sua opinião é importante para nós. Não hesite em partilhar as suas dúvidas ou sugestões. Estamos sempre prontos para ouvir e ajudar.</p>
         
                     <article>
@@ -154,14 +154,14 @@
                     </article>
                 </div>
         
-                <form action="#" method="POST">
+                <form>
                     <div class="form__group">
                         <label for="name">Nome</label>
-                        <input type="text" placeholder="Digite seu nome" name="Nome do Paciente" id="name" required>
+                        <input type="text" placeholder="Digite o seu nome" name="Nome do Paciente" id="name" required>
                     </div>
                     <div class="form__group">
                         <label for="email">Email</label>
-                        <input type="email" placeholder="Digite seu email" name="email" id="email" required>
+                        <input type="email" placeholder="Digite o seu email" name="email" id="email" required>
                     </div>
                     
                     <div class="form__group">
