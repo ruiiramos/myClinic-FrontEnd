@@ -43,6 +43,16 @@ export const useConsultaStore = defineStore('consulta', {
         throw error; 
       }
     },
+    async createEspecialidades(especialidade) {
+      try {
+        const response = await api.post('/especialidades', especialidade);
+        this.especialidades.push(response.data.especialidade);
+        return response.data.especialidade;
+      } catch (error) {
+        console.error('Error in store creating especialidade:', error);
+        throw error; 
+      }
+    },
     async updateConsulta(updates, id, token) {
       try {
         const response = await api.patch(`/consultas/${id}`, updates, token);

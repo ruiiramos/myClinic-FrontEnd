@@ -6,7 +6,7 @@
             <form class="appointment-form" @submit.prevent="handleSubmit">
                 <div class="input-group">
                     <label for="especialidade">Especialidade</label>
-                    <input type="text" id="especialidade" v-model="formData.nome" placeholder="Insira o nome da especialidade" required>
+                    <input type="text" id="especialidade" v-model="especialidade" placeholder="Insira o nome da especialidade" required>
                 </div>
 
                 <!-- Botão Registar -->
@@ -32,62 +32,25 @@ export default {
         return {
             consultaStore: useConsultaStore(),
             userStore: useUserStore(),
-            formData: {
-                data: '',
-                especialidade: '',
-                horario: '',
-                preco_consulta: '70.00',
-                medico: '',
-                paciente: '',
-            },
-            medicos: [],
+            especialidade: '',
             notification: {
                 message: '',
                 type: '' // 'success' or 'error'
             }
         }
     },
-    async created() {
-        const queryEspecialidade = this.$route.query.especialidade;
-        if (queryEspecialidade) {
-            this.formData.especialidade = queryEspecialidade;
-            await this.fetchMedicosByEspecialidade();
-        }
-    },
     methods: {
-        async fetchMedicosByEspecialidade() {
-            const consultaStore = useConsultaStore();
-            try {
-                const especialidade = this.formData.especialidade;
-                const data = `?especialidade=${especialidade}`
-                const response = await consultaStore.fetchMedicosByEspecialidade(data);
-
-                const medicosNomes = response.map(medico => ({ text: medico.nome, value: medico.nome }));
-
-                this.medicos = medicosNomes;
-            } catch (error) {
-                console.error('Error fetching medicos:', error);
-                this.showNotification('Failed to fetch medicos. Please try again.', 'error');
-            }
-        },
         async handleSubmit() {
             const consultaStore = useConsultaStore();
-            const loggedUser = await this.userStore.fetchLoggedUser();
 
             try {
-                const consultaData = {
-                    data: this.formData.data,
-                    hora: this.formData.horario,
-                    preco_consulta: this.formData.preco_consulta,
-                    nome_medico: this.formData.medico,
-                    nome_paciente: loggedUser.nome
-                };
+                const especialidade = {especialidade: this.especialidade };
 
-                await consultaStore.createConsultas(consultaData);
-                this.showNotification('Consulta criada com sucesso!', 'success');
+                await consultaStore.createEspecialidades(especialidade);
+                this.showNotification('Especialidade criada com sucesso!', 'success');
             } catch (error) {
-                console.error('Error creating consulta:', error);
-                const errorMessage = error.response?.data?.message || 'Falha ao criar consulta. Por favor, tente novamente.';
+                console.error('Error creating especialidade:', error);
+                const errorMessage = error.response.data.message || 'Falha ao criar especialidade. Por favor, tente novamente.';
                 this.showNotification(errorMessage, 'error');
             }
         },
@@ -98,7 +61,7 @@ export default {
                 this.notification.message = '';
                 this.notification.type = '';
                 if (type === 'success') {
-                    this.$router.push('/home');
+                    this.$router.push('/homeadmin');
                 }
             }, 2000);
         }
