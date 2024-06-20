@@ -3,12 +3,7 @@
         <!-- Barra lateral -->
         <Sidebar/>
         <div class="content">
-            <select v-model="selectedMedico" required>
-                <option value="" selected>Selecione um médico</option>
-                <option v-for="medico in medicos" :key="medico.email" :value="medico.nome">
-                    {{ medico.nome }}
-                </option>
-            </select>
+
             <div v-for="medico in filteredMedicosBox" :key="medico.email">
                 <Whitebox :medico="medico" @delete-medico="handleDeleteMedico" />
             </div>
