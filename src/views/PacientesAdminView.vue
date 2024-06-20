@@ -4,8 +4,8 @@
         <Sidebar/>
         <div class="content">
 
-            <div v-for="medico in filteredMedicosBox" :key="medico.email">
-                <Whitebox :medico="medico" @delete-medico="handleDeleteMedico" />
+            <div v-for="paciente in filteredPacientesBox" :key="paciente.nome">
+                <Whitebox :paciente="paciente" @delete-paciente="handleDeletePaciente" />
             </div>
         </div>
     </div>
@@ -13,7 +13,7 @@
 
 <script>
 import Sidebar from "../components/sidebarAdmin.vue"; 
-import Whitebox from "../components/whiteboxMedicoAdmin.vue"; 
+import Whitebox from "../components/whiteboxPacienteAdmin.vue"; 
 import { useUserStore } from '@/stores/user';
 
 export default {
@@ -23,43 +23,43 @@ export default {
   },
   data() {
     return {
-      selectedMedico: '',
-      medicos: [],
-      medicosBox: []
+      selectedPaciente: '',
+      pacientes: [],
+      pacientesBox: []
     };
   },
   async created() {
     const userStore = useUserStore();
     try {
-      await userStore.fetchMedicos();
-      this.medicos = userStore.medicos;
-      this.medicosBox = userStore.medicos;
-      //console.log("Fetched Medicos:", this.medicos);
+      await userStore.fetchPacientes();
+      this.pacientes = userStore.pacientes;
+      this.pacientesBox = userStore.pacientes;
+      //console.log("Fetched Medicos:", this.pacientes);
     } catch (error) {
-      console.error('Error fetching medicos:', error);
+      console.error('Error fetching pacientes:', error);
     }
   },
   methods: {
-    async handleDeleteMedico(id) {
+    async handleDeletePaciente(id) {
       const userStore = useUserStore();
-      //console.log("Handling delete medico with ID:", id);
+      //console.log("Handling delete paciente with ID:", id);
       try {
-        await userStore.deleteMedico(id);
-        this.medicos = this.medicos.filter(medico => medico.id_user !== id);
-        this.medicosBox = this.medicosBox.filter(medico => medico.id_user !== id);
-        //console.log("Fetched Medicos:", this.medicos);
+        await userStore.deletePaciente(id);
+        this.pacientes = this.pacientes.filter(paciente => paciente.id_user !== id);
+        this.pacientesBox = this.pacientesBox.filter(paciente => paciente.id_user !== id);
+        //console.log("Fetched pacientes:", this.pacientes);
       } catch (error) {
-        console.error('Error deleting medico:', error);
+        console.error('Error deleting paciente:', error);
       }
     }
   },
   computed: {
-    filteredMedicosBox() {
-      if (!this.selectedMedico) {
-        return this.medicosBox;
+    filteredPacientesBox() {
+      if (!this.selectedPaciente) {
+        return this.pacientesBox;
       }
-      return this.medicosBox.filter(medico =>
-        medico.nome === this.selectedMedico
+      return this.pacientesBox.filter(paciente =>
+        paciente.nome === this.selectedPaciente
       );
     }
   }

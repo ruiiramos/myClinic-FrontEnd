@@ -39,7 +39,7 @@ export const useUserStore = defineStore('users', {
       async createMedicos(user) {
         try {
           const response = await post('/utilizadores/medicos', user);
-          this.users.push(response.data);
+          this.medicos = user;
           return response.data;
         } catch (error) {
           console.error('Error in store creating user:', error);
@@ -48,12 +48,12 @@ export const useUserStore = defineStore('users', {
       },
       async createPacientes(user) {
         try {
-          console.log('Creating user with data:', user);
+          //console.log('Creating user with data:', user);
           const response = await post('/utilizadores/pacientes', user);
           sessionStorage.setItem('user_id', response.id_user)
           sessionStorage.setItem('email', user.email)
           this.user = user;
-          console.log('This ponto user:', this.user);
+          //console.log('This ponto user:', this.user);
           return response.data;
         } catch (error) {
           console.error('Error in store creating user:', error);
@@ -153,6 +153,16 @@ export const useUserStore = defineStore('users', {
           return response;
         } catch (error) {
           console.error('Error in store deleting médico:', error);
+          throw error;
+        }
+      },
+      async deletePaciente(id) {
+        try {
+          const response = await api.del(`/utilizadores/pacientes/${id}`);
+          this.pacientes = this.pacientes.filter(paciente => paciente.id_user !== id);
+          return response;
+        } catch (error) {
+          console.error('Error in store deleting paciente:', error);
           throw error;
         }
       },
