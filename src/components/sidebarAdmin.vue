@@ -4,19 +4,19 @@
       <ul class="sidebar-icons">
         <img src="../img/myclinic.webp" alt="Logo" class="sidebar-logo">
         <router-link to="/homeadmin">
-          <img :src="$route.name === 'home' ? '../src/img/icons-sidebar/home-rose.webp' : '../src/img/icons-sidebar/home.webp'" alt="Home" class="sidebar-icon">
+          <img :src="$route.name === 'homeadmin' ? '../src/img/icons-sidebar/home-rose.webp' : '../src/img/icons-sidebar/home.webp'" alt="Home" class="sidebar-icon">
         </router-link>
         <router-link to="#">
           <img :src="$route.name === 'dadosmarcacao' ? '../src/img/icons-sidebar/plus-rose.webp' : '../src/img/icons-sidebar/plus.webp'" alt="Marcação" class="sidebar-icon">
         </router-link>
-        <router-link to="#">
-          <img :src="$route.name === 'agenda' ? '../src/img/icons-sidebar/calendar-rose.webp' : '../src/img/icons-sidebar/calendar.webp'" alt="Marcação" class="sidebar-icon">
+        <router-link to="patientadmin">
+          <img :src="$route.name === 'patientadmin' ? '../src/img/icons-sidebar/patient-rose.webp' : '../src/img/icons-sidebar/patient.webp'" alt="Marcação" class="sidebar-icon">
         </router-link>
         <router-link to="/medicosadmin">
-          <img :src="$route.name === 'medicos' ? '../src/img/icons-sidebar/doctor-rose.webp' : '../src/img/icons-sidebar/doctor.webp'" alt="Medicos" class="sidebar-icon">
+          <img :src="$route.name === 'medicosadmin' ? '../src/img/icons-sidebar/doctor-rose.webp' : '../src/img/icons-sidebar/doctor.webp'" alt="Medicos" class="sidebar-icon">
         </router-link>
         <router-link to="/especialidadesadmin">
-          <img :src="$route.name === 'especialidades' ? '../src/img/icons-sidebar/especialidades-rose.webp' : '../src/img/icons-sidebar/especialidades.webp'" alt="Especialidades" class="sidebar-icon">
+          <img :src="$route.name === 'especialidadesadmin' ? '../src/img/icons-sidebar/especialidades-rose.webp' : '../src/img/icons-sidebar/especialidades.webp'" alt="Especialidades" class="sidebar-icon">
         </router-link>
         <router-link to="#">
           <img :src="$route.name === 'user' ? '../src/img/icons-sidebar/user-rose.webp' : '../src/img/icons-sidebar/user.webp'" alt="Perfil" class="sidebar-icon">
