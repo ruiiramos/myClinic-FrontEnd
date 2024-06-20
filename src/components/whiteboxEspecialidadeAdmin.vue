@@ -1,7 +1,7 @@
 <template>
     <div class="white-rectangle">
         <h2>{{ especialidade.especialidade }}</h2>
-        <button @click="eliminarespecialidade" class="mark-button">Eliminar</button>
+        <button @click="deleteEspecialidade" class="mark-button">Eliminar</button>
     </div>
 </template>
 
@@ -14,11 +14,8 @@ export default {
         }
     },
     methods: {
-        eliminarespecialidade() {
-            this.$router.push({
-                path: '#',
-                query: { especialidade: this.especialidade.especialidade }
-            });
+        deleteEspecialidade() {
+            this.$emit('delete-especialidade', this.especialidade.id_especialidade);
         }
     }
 }

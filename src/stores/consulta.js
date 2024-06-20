@@ -85,5 +85,15 @@ export const useConsultaStore = defineStore('consulta', {
         throw error;
       }
     },
+    async deleteEspecialidade(id) {
+      try {
+        const response = await api.del(`/especialidades/${id}`);
+        this.especialidades = this.especialidades.filter(especialidade => especialidade.id_especialidade !== id);
+        return response;
+      } catch (error) {
+        console.error('Error in store deleting especialidade:', error);
+        throw error;
+      }
+    },
   },
 })
