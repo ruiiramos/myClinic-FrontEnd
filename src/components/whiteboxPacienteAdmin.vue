@@ -1,6 +1,6 @@
 <template>
     <div class="white-rectangle">
-        <h2>{{ paciente.nome }}</h2>
+        <h2>{{ paciente.nome }} - {{ paciente.n_utente }}</h2>
         <button class="desmarcar-button" @click="apagarPaciente">Apagar</button>
     </div>
 </template>
