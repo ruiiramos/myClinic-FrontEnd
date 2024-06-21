@@ -1,6 +1,6 @@
 <template>
     <div class="white-rectangle">
-        <h2>{{ medico.nome }}</h2>
+        <h2>{{ medico.nome }}<p>{{medico.especialidade.especialidade}}</p></h2>
         <router-link to="/dadosMarcacao">
             <button class="mark-button">Marcar</button>
         </router-link>
@@ -39,6 +39,10 @@ export default {
     margin: 0;
     font-size: 30px;
 }
+.white-rectangle p {
+    margin: 0;
+    font-size: 17px;
+}
 
 .mark-button {
     background: linear-gradient(135deg, #480ca8, #4cc9f0); 
@@ -49,4 +53,5 @@ export default {
     font-size: 16px; 
     cursor: pointer; 
 }
+
 </style>
