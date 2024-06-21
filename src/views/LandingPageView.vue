@@ -23,14 +23,14 @@
                         <p>Possuimos os melhores protocolos em saúde.</p>
                     </div>
                     <div class="header__image">
-                        <img src="../img/myclinic.webp" alt="Header Image">
+                        <img src="https://res.cloudinary.com/djcedpyhp/image/upload/v1718914926/myclinic_ygocnq.webp" alt="Header Image">
                     </div>
                 </div>
             </header>
         
             <!---------END OF HEADER-------------------->    
             <section id="services">
-                <h2>Nossos Serviços</h2>
+                <h2>Os nossos Serviços</h2>
                 <p>Na MyClinic, temos orgulho em oferecer uma ampla gama de serviços de saúde para atender às suas necessidades.</p>
         
                 <div class="container">
@@ -61,16 +61,16 @@
         
         <!------------------END OF THE SERVICES------------------->
         <section id="doctor">
-            <h2>Nossos Médicos</h2>
+            <h2>Os Nossos Médicos</h2>
             <p>É com grande prazer que apresentamos a nossa dedicada equipa de médicos. Cada um deles é altamente qualificado e comprometido em fornecer o melhor cuidado possível aos nossos pacientes.</p>
             <div class="container">
                 <article>
                     <div class="doctor__image">
-                        <img src="../img/medica.webp" alt="Médico 1">
+                        <img src="https://res.cloudinary.com/djcedpyhp/image/upload/v1718914815/medica_qih2al.webp" alt="Médico 1">
                     </div>
                     <div class="doctor__details">
-                        <h4>Drª. Ana Maia</h4>
-                        <small>Psicólga</small>
+                        <h4>Drª. Catarina Moreira</h4>
+                        <small>Medicina Geral</small>
                     </div>
                     <div class="doctor__socials">
                         <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.webp" width="15px" height="15px"></a>
@@ -79,11 +79,11 @@
         
                 <article>
                     <div class="doctor__image">
-                        <img src="../img/medica.webp" alt="Médico 2">
+                        <img src="https://res.cloudinary.com/djcedpyhp/image/upload/v1718914712/_117c1dac-42e7-4c14-b2df-8df8c4c742e3_iuvbas.jpg" alt="Médico 2">
                     </div>
                     <div class="doctor__details">
-                        <h4>Drª. Ana Maia</h4>
-                        <small>Psicólga</small>
+                        <h4>Drª. Sara Vieira</h4>
+                        <small>Ortopedia</small>
                     </div>
                     <div class="doctor__socials">
                         <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.webp" width="15px" height="15px"></a>
@@ -93,11 +93,11 @@
         
                 <article>
                     <div class="doctor__image">
-                        <img src="../img/medica.webp" alt="Médico 3">
+                        <img src="https://res.cloudinary.com/djcedpyhp/image/upload/v1718914712/_fa4b17d1-c45f-43fc-bd69-018b885a41b5_ejpzag.jpg" alt="Médico 3">
                     </div>
                     <div class="doctor__details">
-                        <h4>Drª. Ana Maia</h4>
-                        <small>Psicólga</small>
+                        <h4>Dr. Rui Ramos</h4>
+                        <small>Pediatria</small>
                     </div>
                     <div class="doctor__socials">
                         <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.webp" width="15px" height="15px"></a>
@@ -106,11 +106,11 @@
         
                 <article>
                     <div class="doctor__image">
-                        <img src="../img/medica.webp" alt="Médico 4">
+                        <img src="https://res.cloudinary.com/djcedpyhp/image/upload/v1718914712/_5439a73d-a0df-42d0-8292-d20e3456c488_xwvieb.jpg" alt="Médico 4">
                     </div>
                     <div class="doctor__details">
-                        <h4>Drª. Ana Maia</h4>
-                        <small>Psicólga</small>
+                        <h4>Drª. Vânia Sousa</h4>
+                        <small>Urologia</small>
                     </div>
                     <div class="doctor__socials">
                         <a href="https://linkedin.com" target="_blank"><img src="../img/linkedin.webp" width="15px" height="15px"></a>

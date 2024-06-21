@@ -7,6 +7,7 @@ export const useUserStore = defineStore('users', {
       users: [],
       medicos: [],
       pacientes: [],
+      paciente: [],
       user: null,
       loggedUser: null,
       isLoggedIn: false,
@@ -25,6 +26,16 @@ export const useUserStore = defineStore('users', {
           console.log(this.medicos);
         } catch (error) {
           console.error('Error in store fetching objects:', error);
+        }
+      },
+      async fetchOneMedico(id) {
+        try {
+          const response = await api.get(`/utilizadores/medicos/${id}`);
+          this.medico = response.data;
+          return response.data;
+        } catch (error) {
+          console.error('Error fetching logged-in user:', error);
+          throw error;
         }
       },
       async fetchPacientes() {
