@@ -8,7 +8,7 @@
 
         <div class="input-group">
           <label for="nome">Nome</label>
-          <input id="nome" v-model="formData.nome" readonly >
+          <input id="nome" v-model="formData.nome" readonly>
         </div>
 
         <div class="input-group">
@@ -25,11 +25,11 @@
         </div>
         <div class="input-group">
           <label for="email">Email</label>
-          <input id="email" v-model="formData.email" />
+          <input id="email" v-model="formData.email" @input="checkChanges" />
         </div>
         <div class="input-group">
           <label for="cod_postal">Codigo Postal</label>
-          <input id="cod_postal" v-model="formData.cod_postal" />
+          <input id="cod_postal" v-model="formData.cod_postal" @input="checkChanges" />
         </div>
         <div class="input-group">
           <label for="sistema_saude">Sistema de Saúde</label>
@@ -37,14 +37,14 @@
         </div>
         <div class="input-group">
           <label for="contacto">Contacto</label>
-          <input id="contacto" v-model="formData.contacto" />
+          <input id="contacto" v-model="formData.contacto" @input="checkChanges" />
         </div>
         <div class="input-group">
           <label for="password">password</label>
-          <input id="password" type="password" v-model="formData.password" />
+          <input id="password" type="password" v-model="formData.password" @input="checkChanges" />
         </div>
       </div>
-      <button @click="handleSubmit" class="profile_save-button">Alterar</button>
+      <button :disabled="!isChanged" @click="handleSubmit" class="profile_save-button">Alterar</button>
     </div>
   </div>
 
@@ -78,6 +78,8 @@ export default {
         contacto: '',
         password: '',
       },
+      initialData: {},
+      isChanged: false,
       notification: {
         message: '',
         type: ''
@@ -88,7 +90,7 @@ export default {
     try {
       const loggedUser = await this.userStore.fetchLoggedUser();
       if (loggedUser) {
-        this.formData = {
+        const userData = {
           nome: loggedUser.nome || '',
           n_utente: loggedUser.n_utente || '',
           data_nascimento: this.formatDate(loggedUser.data_nascimento) || '',
@@ -99,6 +101,8 @@ export default {
           contacto: loggedUser.contacto || '',
           password: loggedUser.password || '',
         };
+        this.formData = { ...userData };
+        this.initialData = { ...userData };
       }
     } catch (error) {
       console.error('Error fetching logged-in user:', error);
@@ -119,12 +123,22 @@ export default {
         this.notification.message = '';
       }, 3000); // Oculta a notificação após 3 segundos
     },
+    checkChanges() {
+      this.isChanged = (
+        this.formData.email !== this.initialData.email ||
+        this.formData.cod_postal !== this.initialData.cod_postal ||
+        this.formData.contacto !== this.initialData.contacto ||
+        this.formData.password !== this.initialData.password
+      );
+    },
     async handleSubmit() {
       try {
         const token = sessionStorage.getItem('jwt');
         await this.userStore.updatePaciente(this.formData, this.userStore.loggedUser.id_user, token);
-        this.showNotification('Dados alterados com sucesso', 'success');
-        this.$router.push('/home');
+        this.showNotification('Dados alterados com sucesso!', 'success');
+        setTimeout(() => {
+          this.$router.push('/home');
+        }, 3000); // Redireciona após 3 segundos
       } catch (error) {
         console.error('Error updating profile:', error);
         this.showNotification('Falha ao alterar os dados', 'error');
@@ -192,6 +206,10 @@ export default {
   position: relative;
   left: 35%;
   margin-top: 13px;
+}
+.profile_save-button:disabled {
+  background: gray;
+  cursor: not-allowed;
 }
 .notification-container {
   position: fixed;
