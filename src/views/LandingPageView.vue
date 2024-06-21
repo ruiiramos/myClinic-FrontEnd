@@ -66,7 +66,7 @@
             <div class="container">
                 <article>
                     <div class="doctor__image">
-                        <img src="https://res.cloudinary.com/djcedpyhp/image/upload/v1718914815/medica_qih2al.webp" alt="Médico 1">
+                        <img src="https://res.cloudinary.com/djcedpyhp/image/upload/v1718980873/_b92446b5-5d0a-40ad-983d-06fde3627ec8_drhizw.jpg" alt="Médico 1">
                     </div>
                     <div class="doctor__details">
                         <h4>Drª. Catarina Moreira</h4>
@@ -153,23 +153,6 @@
                         </div>
                     </article>
                 </div>
-        
-                <form>
-                    <div class="form__group">
-                        <label for="name">Nome</label>
-                        <input type="text" placeholder="Digite o seu nome" name="Nome do Paciente" id="name" required>
-                    </div>
-                    <div class="form__group">
-                        <label for="email">Email</label>
-                        <input type="email" placeholder="Digite o seu email" name="email" id="email" required>
-                    </div>
-                    
-                    <div class="form__group">
-                        <label for="message">Mensagem</label>
-                        <textarea name="Mensagem" id="message" rows="6" placeholder="Adicione uma mensagem" required></textarea>
-                    </div>
-                    <input type="submit" value="Enviar Mensagem" class="btn-primary">
-                </form>
             </div>
         </section>
         <!------------------END OF THE APPOINTMENT------------------->     
