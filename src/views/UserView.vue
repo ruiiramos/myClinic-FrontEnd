@@ -5,39 +5,41 @@
     <div class="profile">
       <img src="https://res.cloudinary.com/djcedpyhp/image/upload/v1718913472/avatar_user.jpg" alt="Profile Picture" class="profile_image" />
       <div class="profile_info">
-        <div class="profile_field">
+
+        <div class="input-group">
           <label for="nome">Nome</label>
-          <input id="nome" v-model="formData.nome" readonly />
+          <input id="nome" v-model="formData.nome" readonly >
         </div>
-        <div class="profile_field">
+
+        <div class="input-group">
           <label for="n_utente">Nº Utente</label>
           <input id="n_utente" v-model="formData.n_utente" readonly />
         </div>
-        <div class="profile_field">
+        <div class="input-group">
           <label for="data_nascimento">Data de Nascimento</label>
           <input id="data_nascimento" v-model="formData.data_nascimento" readonly />
         </div>
-        <div class="profile_field">
+        <div class="input-group">
           <label for="genero">Genero</label>
           <input id="genero" v-model="formData.genero" readonly />
         </div>
-        <div class="profile_field">
+        <div class="input-group">
           <label for="email">Email</label>
           <input id="email" v-model="formData.email" />
         </div>
-        <div class="profile_field">
+        <div class="input-group">
           <label for="cod_postal">Codigo Postal</label>
           <input id="cod_postal" v-model="formData.cod_postal" />
         </div>
-        <div class="profile_field">
+        <div class="input-group">
           <label for="sistema_saude">Sistema de Saúde</label>
           <input id="sistema_saude" v-model="formData.sistema_saude" readonly />
         </div>
-        <div class="profile_field">
+        <div class="input-group">
           <label for="contacto">Contacto</label>
           <input id="contacto" v-model="formData.contacto" />
         </div>
-        <div class="profile_field">
+        <div class="input-group">
           <label for="password">password</label>
           <input id="password" type="password" v-model="formData.password" />
         </div>
@@ -136,38 +138,46 @@ export default {
 .container {
   display: flex;
   flex-direction: row;
-  height: 100vh;
   overflow: hidden;
 }
 .profile {
   width: 300px;
   margin: 0 auto;
-  margin-top: 70px;
   font-family: Arial, sans-serif;
 }
 .profile_image {
   display: flex;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 20px;
+  position: relative;
+  left: 70%;
 }
 .profile_info {
   display: flex;
   flex-direction: column;
 }
-.profile_field {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+.input-group {
+  display: absolute;
+  position: relative;
+  left: 35%;
 }
-.profile_field label {
-  font-weight: bold;
+
+.input-group label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--color-heading);
 }
-.profile_field input {
-  flex-grow: 1;
-  margin-left: 10px;
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-bottom: 2px solid #6E7179;
+  background-color: transparent;
+  outline: none;
 }
 .profile_save-button {
   background: linear-gradient(135deg, #480ca8, #4cc9f0);
@@ -178,6 +188,10 @@ export default {
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
+  display: absolute;
+  position: relative;
+  left: 35%;
+  margin-top: 13px;
 }
 .notification-container {
   position: fixed;
