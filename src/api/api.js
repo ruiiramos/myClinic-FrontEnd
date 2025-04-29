@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:3000/', // URL do servidor back-end
+  baseURL: 'https://myclinic-0efm.onrender.com/', // URL do servidor back-end
 });
 
 api.interceptors.request.use(config => {
